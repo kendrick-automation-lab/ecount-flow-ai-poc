@@ -1,0 +1,17 @@
+.env*
+!.env.example
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+*.log
+report-*.json
+
+# SQLite DB (regenerated from scripts/db_seed.py)
+data/*.db
+data/*.db-journal
+
+.DS_Store
+Thumbs.db

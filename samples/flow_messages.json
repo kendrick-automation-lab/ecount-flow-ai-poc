@@ -1,0 +1,44 @@
+{
+  "channels": [
+    {"id": "C-PURCHASE", "name": "구매팀"},
+    {"id": "C-INVENTORY", "name": "재고관리"}
+  ],
+  "recent_messages": [
+    {
+      "channel": "C-PURCHASE",
+      "author": "박상민 (구매팀)",
+      "ts": "2026-05-25T10:30:00",
+      "text": "KS-WALL-A100 다음 분기 행사 대비 발주 검토 필요. 일단 현대건자재 단가 확인."
+    },
+    {
+      "channel": "C-PURCHASE",
+      "author": "이지은 (구매팀)",
+      "ts": "2026-05-24T15:12:00",
+      "text": "KS-FLOOR-C310 단가 또 올랐어요. 다음 발주 단가 변동 주시 필요."
+    },
+    {
+      "channel": "C-INVENTORY",
+      "author": "김도윤 (물류)",
+      "ts": "2026-05-26T09:05:00",
+      "text": "KS-DECO-B220 행사 끝나서 출고 거의 멈춤. 당분간 발주 X."
+    },
+    {
+      "channel": "C-PURCHASE",
+      "author": "박상민 (구매팀)",
+      "ts": "2026-05-23T11:00:00",
+      "text": "KS-PAINT-D050 동신산업 외 대체 공급선 검토 중. 리드타임 너무 김."
+    },
+    {
+      "channel": "C-PURCHASE",
+      "author": "김부장 (구매팀장)",
+      "ts": "2026-05-20T09:00:00",
+      "text": "공지: 모든 품목 공통 — 직전 단가 대비 10% 이상 오르면 발주 전에 저한테 먼저 보고해주세요."
+    },
+    {
+      "channel": "C-INVENTORY",
+      "author": "김부장 (구매팀장)",
+      "ts": "2026-05-21T09:30:00",
+      "text": "겨울 시즌 대비 단열재 카테고리는 안전재고를 평소의 1.5배로 봐주세요."
+    }
+  ]
+}

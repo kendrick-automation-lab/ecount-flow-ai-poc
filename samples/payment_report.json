@@ -1,0 +1,7309 @@
+{
+  "scenario": "payment",
+  "summary": {
+    "auto_execute": 39,
+    "request_confirm": 12,
+    "manual_review": 49,
+    "matches_saved": 51,
+    "remaining_unmatched": 49,
+    "total_input_tokens": 0,
+    "total_output_tokens": 0
+  },
+  "cycles": [
+    {
+      "payment_id": 59,
+      "partner_name_as_received": "주식회사 겨레",
+      "amount": 344692,
+      "recommendation": {
+        "payment_id": 59,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  17
+                ],
+                "total": 478481,
+                "diff_ratio": 0.2796,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 74,
+      "partner_name_as_received": "한솔산업19",
+      "amount": 3269196,
+      "recommendation": {
+        "payment_id": 74,
+        "selected_partner_id": 32,
+        "selected_invoice_ids": [
+          16
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,269,196원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 32,
+              "partner_name": "한솔산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  16
+                ],
+                "total": 3269196,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  8
+                ],
+                "total": 4212518,
+                "diff_ratio": 0.2239,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  14
+                ],
+                "total": 4745476,
+                "diff_ratio": 0.3111,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 4
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  19
+                ],
+                "total": 3691567,
+                "diff_ratio": 0.1144,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  25
+                ],
+                "total": 3268692,
+                "diff_ratio": 0.0002,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.159,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.2814,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 4
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 74,
+          "invoice_ids": [
+            16
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 65,
+      "partner_name_as_received": "현대 건자재10",
+      "amount": 731839,
+      "recommendation": {
+        "payment_id": 65,
+        "selected_partner_id": 41,
+        "selected_invoice_ids": [
+          29
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (731,839원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 41,
+              "partner_name": "현대 건자재10",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  29
+                ],
+                "total": 731839,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 45,
+              "partner_name": "주식회사 현대건자재7",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  69
+                ],
+                "total": 2289175,
+                "diff_ratio": 0.6803,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 23,
+              "partner_name": "한라건자재16",
+              "fuzz_score": 66.7
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 65,
+          "invoice_ids": [
+            29
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 69,
+      "partner_name_as_received": "백두자재18",
+      "amount": 478481,
+      "recommendation": {
+        "payment_id": 69,
+        "selected_partner_id": 2,
+        "selected_invoice_ids": [
+          17
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (478,481원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  17
+                ],
+                "total": 478481,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 69,
+          "invoice_ids": [
+            17
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 95,
+      "partner_name_as_received": "삼성 건자재5",
+      "amount": 392002,
+      "recommendation": {
+        "payment_id": 95,
+        "selected_partner_id": 39,
+        "selected_invoice_ids": [
+          61
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (392,002원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 39,
+              "partner_name": "삼성 건자재5",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  61
+                ],
+                "total": 392002,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  93
+                ],
+                "total": 481781,
+                "diff_ratio": 0.1863,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 4
+          },
+          {
+            "candidate": {
+              "partner_id": 15,
+              "partner_name": "삼성 건자재4",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 40,
+              "partner_name": "(주)태양자재5",
+              "fuzz_score": 75.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  31
+                ],
+                "total": 871398,
+                "diff_ratio": 0.5501,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 95,
+          "invoice_ids": [
+            61
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 22,
+      "partner_name_as_received": "송산건설14",
+      "amount": 1625797,
+      "recommendation": {
+        "payment_id": 22,
+        "selected_partner_id": 24,
+        "selected_invoice_ids": [
+          77
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (1,625,797원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 24,
+              "partner_name": "송산건설14",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  77
+                ],
+                "total": 1625797,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  60
+                ],
+                "total": 2685129,
+                "diff_ratio": 0.3945,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 27,
+              "partner_name": "(주)송산건설18",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  50
+                ],
+                "total": 3148707,
+                "diff_ratio": 0.4837,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 22,
+          "invoice_ids": [
+            77
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 47,
+      "partner_name_as_received": "한솔산업8",
+      "amount": 3434930,
+      "recommendation": {
+        "payment_id": 47,
+        "selected_partner_id": 21,
+        "selected_invoice_ids": [
+          90
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,434,930원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  90
+                ],
+                "total": 3434930,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.1164,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.245,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 4
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  27
+                ],
+                "total": 4266884,
+                "diff_ratio": 0.195,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 47,
+          "invoice_ids": [
+            90
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 24,
+      "partner_name_as_received": "(주)백두자재15",
+      "amount": 2733224,
+      "recommendation": {
+        "payment_id": 24,
+        "selected_partner_id": 6,
+        "selected_invoice_ids": [
+          49
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,733,224원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  49
+                ],
+                "total": 2733224,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 24,
+          "invoice_ids": [
+            49
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 46,
+      "partner_name_as_received": "동양 건설18",
+      "amount": 444981,
+      "recommendation": {
+        "payment_id": 46,
+        "selected_partner_id": 36,
+        "selected_invoice_ids": [
+          95
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (444,981원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 36,
+              "partner_name": "동양 건설18",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  95
+                ],
+                "total": 444981,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  15
+                ],
+                "total": 1411231,
+                "diff_ratio": 0.6847,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 8,
+              "partner_name": "동양건설12",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 11,
+              "partner_name": "주식회사 동양건설13",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 46,
+          "invoice_ids": [
+            95
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 25,
+      "partner_name_as_received": "동신건설11",
+      "amount": 2642122,
+      "recommendation": {
+        "payment_id": 25,
+        "selected_partner_id": 43,
+        "selected_invoice_ids": [
+          12
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,642,122원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 43,
+              "partner_name": "주식회사 동신건설11",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  12
+                ],
+                "total": 2642122,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  23
+                ],
+                "total": 3643960,
+                "diff_ratio": 0.2749,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 34,
+              "partner_name": "주식회사 동신건설10",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 31,
+              "partner_name": "(주)동신건설2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 25,
+          "invoice_ids": [
+            12
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 80,
+      "partner_name_as_received": "대림산업16",
+      "amount": 3640153,
+      "recommendation": {
+        "payment_id": 80,
+        "selected_partner_id": 28,
+        "selected_invoice_ids": [
+          46
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,640,153원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  46
+                ],
+                "total": 3640153,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 80,
+          "invoice_ids": [
+            46
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 15,
+      "partner_name_as_received": "남도 자재2",
+      "amount": 2618894,
+      "recommendation": {
+        "payment_id": 15,
+        "selected_partner_id": 10,
+        "selected_invoice_ids": [
+          41
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,618,894원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  41
+                ],
+                "total": 2618894,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  99
+                ],
+                "total": 3124866,
+                "diff_ratio": 0.1619,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 15,
+          "invoice_ids": [
+            41
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 43,
+      "partner_name_as_received": "대림산업16",
+      "amount": 3905977,
+      "recommendation": {
+        "payment_id": 43,
+        "selected_partner_id": 28,
+        "selected_invoice_ids": [
+          83
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,905,977원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  83
+                ],
+                "total": 3905977,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 43,
+          "invoice_ids": [
+            83
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 93,
+      "partner_name_as_received": "주식회사 윈드",
+      "amount": 1135416,
+      "recommendation": {
+        "payment_id": 93,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  67
+                ],
+                "total": 2398784,
+                "diff_ratio": 0.5267,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 58,
+      "partner_name_as_received": "(주) 조선출판",
+      "amount": 1009742,
+      "recommendation": {
+        "payment_id": 58,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  67
+                ],
+                "total": 2398784,
+                "diff_ratio": 0.5791,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 44,
+      "partner_name_as_received": "서해목재14",
+      "amount": 1279104,
+      "recommendation": {
+        "payment_id": 44,
+        "selected_partner_id": 47,
+        "selected_invoice_ids": [
+          51
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (1,279,104원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 47,
+              "partner_name": "서해 목재14",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  51
+                ],
+                "total": 1279104,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  34
+                ],
+                "total": 2615819,
+                "diff_ratio": 0.511,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  96
+                ],
+                "total": 4234240,
+                "diff_ratio": 0.6979,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 44,
+          "invoice_ids": [
+            51
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 92,
+      "partner_name_as_received": "한솔산업2",
+      "amount": 1620535,
+      "recommendation": {
+        "payment_id": 92,
+        "selected_partner_id": 7,
+        "selected_invoice_ids": [
+          19
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  19
+                ],
+                "total": 3691567,
+                "diff_ratio": 0.561,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  27
+                ],
+                "total": 4266884,
+                "diff_ratio": 0.6202,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  25
+                ],
+                "total": 3268692,
+                "diff_ratio": 0.5042,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.5831,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.6438,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 92,
+          "invoice_ids": [
+            19
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 64,
+      "partner_name_as_received": "주식회사 한양철강10",
+      "amount": 3913752,
+      "recommendation": {
+        "payment_id": 64,
+        "selected_partner_id": 50,
+        "selected_invoice_ids": [
+          2
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,913,752원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 50,
+              "partner_name": "주식회사 한양철강10",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  2
+                ],
+                "total": 3913752,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 64,
+          "invoice_ids": [
+            2
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 9,
+      "partner_name_as_received": "(주) 푸른코리아네트워크",
+      "amount": 359321,
+      "recommendation": {
+        "payment_id": 9,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 2,
+      "partner_name_as_received": "서해 목재19",
+      "amount": 2715051,
+      "recommendation": {
+        "payment_id": 2,
+        "selected_partner_id": 33,
+        "selected_invoice_ids": [
+          96
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  96
+                ],
+                "total": 4234240,
+                "diff_ratio": 0.3588,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 4,
+              "partner_name": "(주)서해목재9",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 2,
+          "invoice_ids": [
+            96
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 19,
+      "partner_name_as_received": "주식회사 다올뷰티",
+      "amount": 160554,
+      "recommendation": {
+        "payment_id": 19,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 70,
+      "partner_name_as_received": "주식회사 대림산업19",
+      "amount": 2847943,
+      "recommendation": {
+        "payment_id": 70,
+        "selected_partner_id": 12,
+        "selected_invoice_ids": [
+          76
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,847,943원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  76
+                ],
+                "total": 2847943,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  5
+                ],
+                "total": 3309758,
+                "diff_ratio": 0.1395,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  13
+                ],
+                "total": 3363843,
+                "diff_ratio": 0.1534,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 70,
+          "invoice_ids": [
+            76
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 5,
+      "partner_name_as_received": "송산건설18",
+      "amount": 2018535,
+      "recommendation": {
+        "payment_id": 5,
+        "selected_partner_id": 27,
+        "selected_invoice_ids": [
+          50
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 27,
+              "partner_name": "(주)송산건설18",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  50
+                ],
+                "total": 3148707,
+                "diff_ratio": 0.3589,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 42,
+              "partner_name": "주식회사 송산건설18",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  79
+                ],
+                "total": 2018535,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 5,
+          "invoice_ids": [
+            50
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 11,
+      "partner_name_as_received": "한솔산업8",
+      "amount": 3434930,
+      "recommendation": {
+        "payment_id": 11,
+        "selected_partner_id": 21,
+        "selected_invoice_ids": [
+          75
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.1164,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.245,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  27
+                ],
+                "total": 4266884,
+                "diff_ratio": 0.195,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 11,
+          "invoice_ids": [
+            75
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 27,
+      "partner_name_as_received": "동신건설10",
+      "amount": 1783157,
+      "recommendation": {
+        "payment_id": 27,
+        "selected_partner_id": 34,
+        "selected_invoice_ids": [
+          40
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (1,783,157원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 34,
+              "partner_name": "주식회사 동신건설10",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  40
+                ],
+                "total": 1783157,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 43,
+              "partner_name": "주식회사 동신건설11",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  62
+                ],
+                "total": 2110546,
+                "diff_ratio": 0.1551,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  23
+                ],
+                "total": 3643960,
+                "diff_ratio": 0.5107,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 31,
+              "partner_name": "(주)동신건설2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 27,
+          "invoice_ids": [
+            40
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 4,
+      "partner_name_as_received": "주식회사 대림산업19",
+      "amount": 3309758,
+      "recommendation": {
+        "payment_id": 4,
+        "selected_partner_id": 12,
+        "selected_invoice_ids": [
+          5
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,309,758원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  5
+                ],
+                "total": 3309758,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  13
+                ],
+                "total": 3363843,
+                "diff_ratio": 0.0163,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 4,
+          "invoice_ids": [
+            5
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 52,
+      "partner_name_as_received": "(주)한양철강20",
+      "amount": 2398784,
+      "recommendation": {
+        "payment_id": 52,
+        "selected_partner_id": 3,
+        "selected_invoice_ids": [
+          67
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,398,784원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  67
+                ],
+                "total": 2398784,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  59
+                ],
+                "total": 2429799,
+                "diff_ratio": 0.0129,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.1132,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 50,
+              "partner_name": "주식회사 한양철강10",
+              "fuzz_score": 83.3
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  7
+                ],
+                "total": 4228768,
+                "diff_ratio": 0.4327,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 52,
+          "invoice_ids": [
+            67
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 56,
+      "partner_name_as_received": "(주) 한빛에너지",
+      "amount": 542642,
+      "recommendation": {
+        "payment_id": 56,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 33, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 33.3
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 33.3
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 33.3
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  56
+                ],
+                "total": 1569300,
+                "diff_ratio": 0.6542,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 33, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 10,
+      "partner_name_as_received": "백두자재15",
+      "amount": 2733224,
+      "recommendation": {
+        "payment_id": 10,
+        "selected_partner_id": 6,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 29,
+      "partner_name_as_received": "남도자재2",
+      "amount": 271146,
+      "recommendation": {
+        "payment_id": 29,
+        "selected_partner_id": 10,
+        "selected_invoice_ids": [
+          87
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  87
+                ],
+                "total": 341366,
+                "diff_ratio": 0.2057,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  24
+                ],
+                "total": 271146,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  32
+                ],
+                "total": 664299,
+                "diff_ratio": 0.5918,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  89
+                ],
+                "total": 819228,
+                "diff_ratio": 0.669,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 29,
+          "invoice_ids": [
+            87
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 66,
+      "partner_name_as_received": "(주) 넥스트",
+      "amount": 1108975,
+      "recommendation": {
+        "payment_id": 66,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 94,
+      "partner_name_as_received": "서해목재19",
+      "amount": 4234240,
+      "recommendation": {
+        "payment_id": 94,
+        "selected_partner_id": 33,
+        "selected_invoice_ids": [
+          96
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (4,234,240원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  96
+                ],
+                "total": 4234240,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 4,
+              "partner_name": "(주)서해목재9",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 94,
+          "invoice_ids": [
+            96
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 13,
+      "partner_name_as_received": "(주)송산건설6",
+      "amount": 1616946,
+      "recommendation": {
+        "payment_id": 13,
+        "selected_partner_id": 17,
+        "selected_invoice_ids": [
+          100
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 17,
+              "partner_name": "(주)송산건설6",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  100
+                ],
+                "total": 2312561,
+                "diff_ratio": 0.3008,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  65
+                ],
+                "total": 2624032,
+                "diff_ratio": 0.3838,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 19,
+              "partner_name": "송산건설5",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 13,
+          "invoice_ids": [
+            100
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 99,
+      "partner_name_as_received": "태양자재19",
+      "amount": 4998670,
+      "recommendation": {
+        "payment_id": 99,
+        "selected_partner_id": 48,
+        "selected_invoice_ids": [
+          18
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (4,998,670원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 48,
+              "partner_name": "태양자재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  18
+                ],
+                "total": 4998670,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 40,
+              "partner_name": "(주)태양자재5",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 66.7
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 99,
+          "invoice_ids": [
+            18
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 21,
+      "partner_name_as_received": "삼성건자재5",
+      "amount": 3492718,
+      "recommendation": {
+        "payment_id": 21,
+        "selected_partner_id": 39,
+        "selected_invoice_ids": [
+          1
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,492,718원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 39,
+              "partner_name": "삼성 건자재5",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  1
+                ],
+                "total": 3492718,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 15,
+              "partner_name": "삼성 건자재4",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 40,
+              "partner_name": "(주)태양자재5",
+              "fuzz_score": 75.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  28,
+                  31
+                ],
+                "total": 3483961,
+                "diff_ratio": 0.0025,
+                "case": "split"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 21,
+          "invoice_ids": [
+            1
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 88,
+      "partner_name_as_received": "동양건설13",
+      "amount": 3781305,
+      "recommendation": {
+        "payment_id": 88,
+        "selected_partner_id": 11,
+        "selected_invoice_ids": [
+          66
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,781,305원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 11,
+              "partner_name": "주식회사 동양건설13",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  66
+                ],
+                "total": 3781305,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 8,
+              "partner_name": "동양건설12",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 36,
+              "partner_name": "동양 건설18",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 88,
+          "invoice_ids": [
+            66
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 98,
+      "partner_name_as_received": "(유) 네오에코항공",
+      "amount": 1003076,
+      "recommendation": {
+        "payment_id": 98,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 50,
+      "partner_name_as_received": "주식회사 발해상사",
+      "amount": 634480,
+      "recommendation": {
+        "payment_id": 50,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 33, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 4,
+              "partner_name": "(주)서해목재9",
+              "fuzz_score": 33.3
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 33.3
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 33.3
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 33, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 96,
+      "partner_name_as_received": "주식회사 비전고구려소프트",
+      "amount": 1519620,
+      "recommendation": {
+        "payment_id": 96,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 36,
+      "partner_name_as_received": "삼성건자재5",
+      "amount": 2282361,
+      "recommendation": {
+        "payment_id": 36,
+        "selected_partner_id": 39,
+        "selected_invoice_ids": [
+          81
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,282,361원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 39,
+              "partner_name": "삼성 건자재5",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  81
+                ],
+                "total": 2282361,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 15,
+              "partner_name": "삼성 건자재4",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 40,
+              "partner_name": "(주)태양자재5",
+              "fuzz_score": 75.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  28
+                ],
+                "total": 2612563,
+                "diff_ratio": 0.1264,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 36,
+          "invoice_ids": [
+            81
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 28,
+      "partner_name_as_received": "주식회사 미래우리소프트",
+      "amount": 287041,
+      "recommendation": {
+        "payment_id": 28,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 30,
+      "partner_name_as_received": "백두자재15",
+      "amount": 2733224,
+      "recommendation": {
+        "payment_id": 30,
+        "selected_partner_id": 6,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 61,
+      "partner_name_as_received": "송산건설5",
+      "amount": 1688493,
+      "recommendation": {
+        "payment_id": 61,
+        "selected_partner_id": 19,
+        "selected_invoice_ids": [
+          86
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (1,688,493원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 19,
+              "partner_name": "송산건설5",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  86
+                ],
+                "total": 1688493,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 17,
+              "partner_name": "(주)송산건설6",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  100
+                ],
+                "total": 2312561,
+                "diff_ratio": 0.2699,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  65
+                ],
+                "total": 2624032,
+                "diff_ratio": 0.3565,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 61,
+          "invoice_ids": [
+            86
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 53,
+      "partner_name_as_received": "서해 목재14",
+      "amount": 1279104,
+      "recommendation": {
+        "payment_id": 53,
+        "selected_partner_id": 47,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 47,
+              "partner_name": "서해 목재14",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  34
+                ],
+                "total": 2615819,
+                "diff_ratio": 0.511,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 81,
+      "partner_name_as_received": "(유) 마음솔루션",
+      "amount": 1964662,
+      "recommendation": {
+        "payment_id": 81,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.3,
+        "reason": "fuzz 29 낮음",
+        "risk_flags": [
+          "LOW_FUZZ_SCORE"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 28.6
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  19
+                ],
+                "total": 3691567,
+                "diff_ratio": 0.4678,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 28.6
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  25
+                ],
+                "total": 3268692,
+                "diff_ratio": 0.3989,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.4946,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.5682,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 28.6
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  27
+                ],
+                "total": 4266884,
+                "diff_ratio": 0.5396,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 29 낮음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 38,
+      "partner_name_as_received": "제주 건축15",
+      "amount": 3358731,
+      "recommendation": {
+        "payment_id": 38,
+        "selected_partner_id": 29,
+        "selected_invoice_ids": [
+          64
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (3,358,731원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 29,
+              "partner_name": "제주 건축15",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  64
+                ],
+                "total": 3358731,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  11
+                ],
+                "total": 3955876,
+                "diff_ratio": 0.151,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 37,
+              "partner_name": "(주)제주건축4",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 50.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 38,
+          "invoice_ids": [
+            64
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 48,
+      "partner_name_as_received": "백두 자재7",
+      "amount": 537036,
+      "recommendation": {
+        "payment_id": 48,
+        "selected_partner_id": 49,
+        "selected_invoice_ids": [
+          71
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (537,036원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 49,
+              "partner_name": "백두 자재7",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  71
+                ],
+                "total": 537036,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 48,
+          "invoice_ids": [
+            71
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 39,
+      "partner_name_as_received": "유한회사 겨레반도체",
+      "amount": 993422,
+      "recommendation": {
+        "payment_id": 39,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 29, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 28.6
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 28.6
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  99
+                ],
+                "total": 3124866,
+                "diff_ratio": 0.6821,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 28.6
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 29, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 83,
+      "partner_name_as_received": "한솔산업19",
+      "amount": 2036273,
+      "recommendation": {
+        "payment_id": 83,
+        "selected_partner_id": 32,
+        "selected_invoice_ids": [
+          3
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,036,273원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 32,
+              "partner_name": "한솔산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  3
+                ],
+                "total": 2036273,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  8
+                ],
+                "total": 4212518,
+                "diff_ratio": 0.5166,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  14
+                ],
+                "total": 4745476,
+                "diff_ratio": 0.5709,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  19
+                ],
+                "total": 3691567,
+                "diff_ratio": 0.4484,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  25
+                ],
+                "total": 3268692,
+                "diff_ratio": 0.377,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.4762,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.5524,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 83,
+          "invoice_ids": [
+            3
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 3,
+      "partner_name_as_received": "한솔산업19",
+      "amount": 1582086,
+      "recommendation": {
+        "payment_id": 3,
+        "selected_partner_id": 32,
+        "selected_invoice_ids": [
+          8
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 32,
+              "partner_name": "한솔산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  8
+                ],
+                "total": 4212518,
+                "diff_ratio": 0.6244,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  14
+                ],
+                "total": 4745476,
+                "diff_ratio": 0.6666,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  56
+                ],
+                "total": 1569300,
+                "diff_ratio": 0.0081,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  19
+                ],
+                "total": 3691567,
+                "diff_ratio": 0.5714,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  25
+                ],
+                "total": 3268692,
+                "diff_ratio": 0.516,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.593,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.6523,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 3,
+          "invoice_ids": [
+            8
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 85,
+      "partner_name_as_received": "태양자재19",
+      "amount": 4019957,
+      "recommendation": {
+        "payment_id": 85,
+        "selected_partner_id": 48,
+        "selected_invoice_ids": [
+          38
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (4,019,957원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 48,
+              "partner_name": "태양자재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  38
+                ],
+                "total": 4019957,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 40,
+              "partner_name": "(주)태양자재5",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 66.7
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 85,
+          "invoice_ids": [
+            38
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 55,
+      "partner_name_as_received": "한양 철강4",
+      "amount": 1180825,
+      "recommendation": {
+        "payment_id": 55,
+        "selected_partner_id": 16,
+        "selected_invoice_ids": [
+          59
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  59
+                ],
+                "total": 2429799,
+                "diff_ratio": 0.514,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.5635,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  44
+                ],
+                "total": 2100543,
+                "diff_ratio": 0.4378,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 55,
+          "invoice_ids": [
+            59
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 68,
+      "partner_name_as_received": "동양건설13",
+      "amount": 265356,
+      "recommendation": {
+        "payment_id": 68,
+        "selected_partner_id": 11,
+        "selected_invoice_ids": [
+          22
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (265,356원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 11,
+              "partner_name": "주식회사 동양건설13",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  22
+                ],
+                "total": 265356,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 8,
+              "partner_name": "동양건설12",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 36,
+              "partner_name": "동양 건설18",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 68,
+          "invoice_ids": [
+            22
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 71,
+      "partner_name_as_received": "(주) 푸른소프트",
+      "amount": 141162,
+      "recommendation": {
+        "payment_id": 71,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 90,
+      "partner_name_as_received": "남도자재2",
+      "amount": 148787,
+      "recommendation": {
+        "payment_id": 90,
+        "selected_partner_id": 10,
+        "selected_invoice_ids": [
+          87
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  87
+                ],
+                "total": 341366,
+                "diff_ratio": 0.5641,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  24
+                ],
+                "total": 271146,
+                "diff_ratio": 0.4513,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 90,
+          "invoice_ids": [
+            87
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 76,
+      "partner_name_as_received": "한솔산업8",
+      "amount": 3434930,
+      "recommendation": {
+        "payment_id": 76,
+        "selected_partner_id": 21,
+        "selected_invoice_ids": [
+          75
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.1164,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.245,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  27
+                ],
+                "total": 4266884,
+                "diff_ratio": 0.195,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 76,
+          "invoice_ids": [
+            75
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 78,
+      "partner_name_as_received": "(유) 모두",
+      "amount": 586341,
+      "recommendation": {
+        "payment_id": 78,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 50, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 50.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 50.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 50.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 50, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 100,
+      "partner_name_as_received": "(주)송산건설6",
+      "amount": 5505729,
+      "recommendation": {
+        "payment_id": 100,
+        "selected_partner_id": 17,
+        "selected_invoice_ids": [
+          65,
+          57,
+          100
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + split 매칭",
+        "risk_flags": [
+          "SPLIT_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 17,
+              "partner_name": "(주)송산건설6",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  65,
+                  57,
+                  100
+                ],
+                "total": 5505729,
+                "diff_ratio": 0.0,
+                "case": "split"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 19,
+              "partner_name": "송산건설5",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: SPLIT_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 100,
+          "invoice_ids": [
+            65,
+            57,
+            100
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 6,
+      "partner_name_as_received": "한양철강10",
+      "amount": 4228768,
+      "recommendation": {
+        "payment_id": 6,
+        "selected_partner_id": 50,
+        "selected_invoice_ids": [
+          7
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (4,228,768원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 50,
+              "partner_name": "주식회사 한양철강10",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  7
+                ],
+                "total": 4228768,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 6,
+          "invoice_ids": [
+            7
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 8,
+      "partner_name_as_received": "백두자재18",
+      "amount": 478481,
+      "recommendation": {
+        "payment_id": 8,
+        "selected_partner_id": 2,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 6,
+              "partner_name": "(주)백두자재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 82,
+      "partner_name_as_received": "송산건설14",
+      "amount": 2685129,
+      "recommendation": {
+        "payment_id": 82,
+        "selected_partner_id": 24,
+        "selected_invoice_ids": [
+          60
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,685,129원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 24,
+              "partner_name": "송산건설14",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  60
+                ],
+                "total": 2685129,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 27,
+              "partner_name": "(주)송산건설18",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  50
+                ],
+                "total": 3148707,
+                "diff_ratio": 0.1472,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 82,
+          "invoice_ids": [
+            60
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 97,
+      "partner_name_as_received": "주식회사 대림산업19",
+      "amount": 3309758,
+      "recommendation": {
+        "payment_id": 97,
+        "selected_partner_id": 12,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  13
+                ],
+                "total": 3363843,
+                "diff_ratio": 0.0163,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 35,
+      "partner_name_as_received": "유한회사 월드출판",
+      "amount": 519160,
+      "recommendation": {
+        "payment_id": 35,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 40,
+      "partner_name_as_received": "한양 철강4",
+      "amount": 2429799,
+      "recommendation": {
+        "payment_id": 40,
+        "selected_partner_id": 16,
+        "selected_invoice_ids": [
+          59
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,429,799원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  59
+                ],
+                "total": 2429799,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.1017,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 40,
+          "invoice_ids": [
+            59
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 45,
+      "partner_name_as_received": "유한회사 하나한강코스메틱",
+      "amount": 997018,
+      "recommendation": {
+        "payment_id": 45,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.3,
+        "reason": "fuzz 44 낮음",
+        "risk_flags": [
+          "LOW_FUZZ_SCORE"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 44.4
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.6314,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 40.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 40.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  44
+                ],
+                "total": 2100543,
+                "diff_ratio": 0.5254,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 44 낮음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 79,
+      "partner_name_as_received": "한솔산업19",
+      "amount": 954608,
+      "recommendation": {
+        "payment_id": 79,
+        "selected_partner_id": 32,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 32,
+              "partner_name": "한솔산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  56
+                ],
+                "total": 1569300,
+                "diff_ratio": 0.3917,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 3
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 12,
+      "partner_name_as_received": "유한회사 한강에이아이",
+      "amount": 1968341,
+      "recommendation": {
+        "payment_id": 12,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.3,
+        "reason": "fuzz 57 낮음",
+        "risk_flags": [
+          "LOW_FUZZ_SCORE"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 57.1
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.2723,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 50.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 50.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 57 낮음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 73,
+      "partner_name_as_received": "(주)한양철강20",
+      "amount": 2398784,
+      "recommendation": {
+        "payment_id": 73,
+        "selected_partner_id": 3,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.1132,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 50,
+              "partner_name": "주식회사 한양철강10",
+              "fuzz_score": 83.3
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 72,
+      "partner_name_as_received": "(주) 제나마음그룹",
+      "amount": 608831,
+      "recommendation": {
+        "payment_id": 72,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.3,
+        "reason": "fuzz 33 낮음",
+        "risk_flags": [
+          "LOW_FUZZ_SCORE"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 37,
+              "partner_name": "(주)제주건축4",
+              "fuzz_score": 33.3
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  78
+                ],
+                "total": 1983134,
+                "diff_ratio": 0.693,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 29,
+              "partner_name": "제주 건축15",
+              "fuzz_score": 28.6
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 33 낮음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 18,
+      "partner_name_as_received": "한솔산업19",
+      "amount": 3269196,
+      "recommendation": {
+        "payment_id": 18,
+        "selected_partner_id": 32,
+        "selected_invoice_ids": [
+          8
+        ],
+        "case": "needs_confirm",
+        "confidence": 1.1,
+        "reason": "fuzz 100 + partial 매칭",
+        "risk_flags": [
+          "PARTIAL_PAYMENT"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 32,
+              "partner_name": "한솔산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  8
+                ],
+                "total": 4212518,
+                "diff_ratio": 0.2239,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  14
+                ],
+                "total": 4745476,
+                "diff_ratio": 0.3111,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  19
+                ],
+                "total": 3691567,
+                "diff_ratio": 0.1144,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  25
+                ],
+                "total": 3268692,
+                "diff_ratio": 0.0002,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  75
+                ],
+                "total": 3887371,
+                "diff_ratio": 0.159,
+                "case": "partial"
+              },
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.2814,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 3
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 110% / 위험: PARTIAL_PAYMENT"
+      },
+      "action_result": {
+        "confirm_response": "approve",
+        "match": {
+          "payment_id": 18,
+          "invoice_ids": [
+            8
+          ],
+          "status": "partial",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 86,
+      "partner_name_as_received": "주식회사 코어코리아신문",
+      "amount": 811255,
+      "recommendation": {
+        "payment_id": 86,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 29, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 31,
+              "partner_name": "(주)동신건설2",
+              "fuzz_score": 28.6
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 34,
+              "partner_name": "주식회사 동신건설10",
+              "fuzz_score": 25.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  37
+                ],
+                "total": 1664802,
+                "diff_ratio": 0.5127,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 43,
+              "partner_name": "주식회사 동신건설11",
+              "fuzz_score": 25.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  62
+                ],
+                "total": 2110546,
+                "diff_ratio": 0.6156,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 29, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 37,
+      "partner_name_as_received": "대림산업7",
+      "amount": 2731689,
+      "recommendation": {
+        "payment_id": 37,
+        "selected_partner_id": 20,
+        "selected_invoice_ids": [
+          73
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,731,689원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  73
+                ],
+                "total": 2731689,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  13
+                ],
+                "total": 3363843,
+                "diff_ratio": 0.1879,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 37,
+          "invoice_ids": [
+            73
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 26,
+      "partner_name_as_received": "유한회사 글로벌",
+      "amount": 294093,
+      "recommendation": {
+        "payment_id": 26,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 62,
+      "partner_name_as_received": "동신건설11",
+      "amount": 2110546,
+      "recommendation": {
+        "payment_id": 62,
+        "selected_partner_id": 43,
+        "selected_invoice_ids": [
+          62
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,110,546원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 43,
+              "partner_name": "주식회사 동신건설11",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  62
+                ],
+                "total": 2110546,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              },
+              {
+                "invoice_ids": [
+                  23
+                ],
+                "total": 3643960,
+                "diff_ratio": 0.4208,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 34,
+              "partner_name": "주식회사 동신건설10",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 31,
+              "partner_name": "(주)동신건설2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 62,
+          "invoice_ids": [
+            62
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 77,
+      "partner_name_as_received": "(주) 씨앤씨",
+      "amount": 1998075,
+      "recommendation": {
+        "payment_id": 77,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 31,
+      "partner_name_as_received": "남도 자재2",
+      "amount": 2960260,
+      "recommendation": {
+        "payment_id": 31,
+        "selected_partner_id": 10,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 60,
+      "partner_name_as_received": "주식회사 대림산업16",
+      "amount": 3905977,
+      "recommendation": {
+        "payment_id": 60,
+        "selected_partner_id": 28,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 67,
+      "partner_name_as_received": "한양 철강4",
+      "amount": 5134802,
+      "recommendation": {
+        "payment_id": 67,
+        "selected_partner_id": 16,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 49,
+      "partner_name_as_received": "한솔산업8",
+      "amount": 4549517,
+      "recommendation": {
+        "payment_id": 49,
+        "selected_partner_id": 21,
+        "selected_invoice_ids": [
+          97
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (4,549,517원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  97
+                ],
+                "total": 4549517,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 49,
+          "invoice_ids": [
+            97
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 34,
+      "partner_name_as_received": "동양 건설18",
+      "amount": 1411231,
+      "recommendation": {
+        "payment_id": 34,
+        "selected_partner_id": 36,
+        "selected_invoice_ids": [
+          15
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (1,411,231원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 36,
+              "partner_name": "동양 건설18",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  15
+                ],
+                "total": 1411231,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 8,
+              "partner_name": "동양건설12",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  58
+                ],
+                "total": 2754910,
+                "diff_ratio": 0.4877,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 11,
+              "partner_name": "주식회사 동양건설13",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 34,
+          "invoice_ids": [
+            15
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 16,
+      "partner_name_as_received": "동양 건설18",
+      "amount": 924281,
+      "recommendation": {
+        "payment_id": 16,
+        "selected_partner_id": 36,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 36,
+              "partner_name": "동양 건설18",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 8,
+              "partner_name": "동양건설12",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  58
+                ],
+                "total": 2754910,
+                "diff_ratio": 0.6645,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 11,
+              "partner_name": "주식회사 동양건설13",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 41,
+      "partner_name_as_received": "(주) 시너지모두제조",
+      "amount": 570244,
+      "recommendation": {
+        "payment_id": 41,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 29, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 37,
+              "partner_name": "(주)제주건축4",
+              "fuzz_score": 28.6
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 9,
+              "partner_name": "백두자재8",
+              "fuzz_score": 25.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 29,
+              "partner_name": "제주 건축15",
+              "fuzz_score": 25.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 29, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 89,
+      "partner_name_as_received": "(주) 고구려",
+      "amount": 1468392,
+      "recommendation": {
+        "payment_id": 89,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 17,
+      "partner_name_as_received": "태양자재19",
+      "amount": 4998670,
+      "recommendation": {
+        "payment_id": 17,
+        "selected_partner_id": 48,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 48,
+              "partner_name": "태양자재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 40,
+              "partner_name": "(주)태양자재5",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 66.7
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 33,
+      "partner_name_as_received": "(주) 고려소프트",
+      "amount": 1365659,
+      "recommendation": {
+        "payment_id": 33,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 63,
+      "partner_name_as_received": "(주)한양철강20",
+      "amount": 1491698,
+      "recommendation": {
+        "payment_id": 63,
+        "selected_partner_id": 3,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.4485,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 50,
+              "partner_name": "주식회사 한양철강10",
+              "fuzz_score": 83.3
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 7,
+      "partner_name_as_received": "서해목재19",
+      "amount": 4234240,
+      "recommendation": {
+        "payment_id": 7,
+        "selected_partner_id": 33,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 4,
+              "partner_name": "(주)서해목재9",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 20,
+      "partner_name_as_received": "주식회사 대림산업16",
+      "amount": 3905977,
+      "recommendation": {
+        "payment_id": 20,
+        "selected_partner_id": 28,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 42,
+      "partner_name_as_received": "남도 자재2",
+      "amount": 2960260,
+      "recommendation": {
+        "payment_id": 42,
+        "selected_partner_id": 10,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 75,
+      "partner_name_as_received": "주식회사 대림산업16",
+      "amount": 9795506,
+      "recommendation": {
+        "payment_id": 75,
+        "selected_partner_id": 28,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 28,
+              "partner_name": "주식회사 대림산업16",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 12,
+              "partner_name": "주식회사 대림산업19",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 20,
+              "partner_name": "대림산업7",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 87,
+      "partner_name_as_received": "(유) 고구려가람제조",
+      "amount": 1477741,
+      "recommendation": {
+        "payment_id": 87,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.3,
+        "reason": "fuzz 29 낮음",
+        "risk_flags": [
+          "LOW_FUZZ_SCORE"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 37,
+              "partner_name": "(주)제주건축4",
+              "fuzz_score": 28.6
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  78
+                ],
+                "total": 1983134,
+                "diff_ratio": 0.2548,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 29,
+              "partner_name": "제주 건축15",
+              "fuzz_score": 25.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  11
+                ],
+                "total": 3955876,
+                "diff_ratio": 0.6264,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 29 낮음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 54,
+      "partner_name_as_received": "제주건축4",
+      "amount": 1983134,
+      "recommendation": {
+        "payment_id": 54,
+        "selected_partner_id": 37,
+        "selected_invoice_ids": [
+          78
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (1,983,134원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 37,
+              "partner_name": "(주)제주건축4",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  78
+                ],
+                "total": 1983134,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 29,
+              "partner_name": "제주 건축15",
+              "fuzz_score": 88.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  11
+                ],
+                "total": 3955876,
+                "diff_ratio": 0.4987,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 44.4
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 54,
+          "invoice_ids": [
+            78
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 84,
+      "partner_name_as_received": "현대 건자재10",
+      "amount": 731839,
+      "recommendation": {
+        "payment_id": 84,
+        "selected_partner_id": 41,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 41,
+              "partner_name": "현대 건자재10",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 45,
+              "partner_name": "주식회사 현대건자재7",
+              "fuzz_score": 90.9
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  69
+                ],
+                "total": 2289175,
+                "diff_ratio": 0.6803,
+                "case": "partial"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 23,
+              "partner_name": "한라건자재16",
+              "fuzz_score": 66.7
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 23,
+      "partner_name_as_received": "한솔산업8",
+      "amount": 4549517,
+      "recommendation": {
+        "payment_id": 23,
+        "selected_partner_id": 21,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 22,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 1,
+      "partner_name_as_received": "송산건설5",
+      "amount": 1688493,
+      "recommendation": {
+        "payment_id": 1,
+        "selected_partner_id": 19,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 19,
+              "partner_name": "송산건설5",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 5,
+              "partner_name": "(주)송산건설11",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 17,
+              "partner_name": "(주)송산건설6",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 32,
+      "partner_name_as_received": "유한회사 인포네트워크",
+      "amount": 1791045,
+      "recommendation": {
+        "payment_id": 32,
+        "selected_partner_id": null,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 0, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 1,
+              "partner_name": "(주)한라건자재4",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 2,
+              "partner_name": "(주)백두자재18",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 0.0
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 0, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 57,
+      "partner_name_as_received": "한양 철강4",
+      "amount": 2705003,
+      "recommendation": {
+        "payment_id": 57,
+        "selected_partner_id": 16,
+        "selected_invoice_ids": [
+          45
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (2,705,003원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 16,
+              "partner_name": "한양 철강4",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  45
+                ],
+                "total": 2705003,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 3,
+              "partner_name": "(주)한양철강20",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          },
+          {
+            "candidate": {
+              "partner_id": 26,
+              "partner_name": "한양철강15",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 57,
+          "invoice_ids": [
+            45
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 91,
+      "partner_name_as_received": "한솔산업19",
+      "amount": 4745476,
+      "recommendation": {
+        "payment_id": 91,
+        "selected_partner_id": 32,
+        "selected_invoice_ids": [
+          14
+        ],
+        "case": "matched",
+        "confidence": 0.95,
+        "reason": "fuzz 100 + exact 단일 매칭 (4,745,476원)",
+        "risk_flags": [],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 32,
+              "partner_name": "한솔산업19",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  14
+                ],
+                "total": 4745476,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 7,
+              "partner_name": "한솔산업2",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 21,
+              "partner_name": "한솔산업8",
+              "fuzz_score": 88.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "auto_execute",
+        "reason": "신뢰도 95% + 단일 정확 매칭 + 위험 플래그 없음"
+      },
+      "action_result": {
+        "match": {
+          "payment_id": 91,
+          "invoice_ids": [
+            14
+          ],
+          "status": "matched",
+          "note": ""
+        }
+      }
+    },
+    {
+      "payment_id": 14,
+      "partner_name_as_received": "남도자재2",
+      "amount": 3124866,
+      "recommendation": {
+        "payment_id": 14,
+        "selected_partner_id": 10,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 10,
+              "partner_name": "남도 자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 18,
+              "partner_name": "남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [
+              {
+                "invoice_ids": [
+                  99
+                ],
+                "total": 3124866,
+                "diff_ratio": 0.0,
+                "case": "exact"
+              }
+            ],
+            "outstanding_count": 3
+          },
+          {
+            "candidate": {
+              "partner_id": 30,
+              "partner_name": "(주)남도자재2",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    },
+    {
+      "payment_id": 51,
+      "partner_name_as_received": "서해 목재19",
+      "amount": 6850059,
+      "recommendation": {
+        "payment_id": 51,
+        "selected_partner_id": 33,
+        "selected_invoice_ids": [],
+        "case": "manual",
+        "confidence": 0.4,
+        "reason": "fuzz 100, 금액 매칭 후보 없음",
+        "risk_flags": [
+          "NO_MATCH"
+        ],
+        "candidates": [
+          {
+            "candidate": {
+              "partner_id": 33,
+              "partner_name": "서해 목재19",
+              "fuzz_score": 100.0
+            },
+            "matches": [],
+            "outstanding_count": 1
+          },
+          {
+            "candidate": {
+              "partner_id": 4,
+              "partner_name": "(주)서해목재9",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 2
+          },
+          {
+            "candidate": {
+              "partner_id": 14,
+              "partner_name": "서해 목재15",
+              "fuzz_score": 90.9
+            },
+            "matches": [],
+            "outstanding_count": 0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "fuzz 100, 금액 매칭 후보 없음"
+      },
+      "action_result": {}
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "warehouses": [
+    {"code": "WH-001", "name": "제주 본사 창고"},
+    {"code": "WH-002", "name": "제주 출고 창고"}
+  ],
+  "items": [
+    {
+      "sku": "KS-WALL-A100",
+      "name": "타일 벽재 A100",
+      "category": "벽재",
+      "safety_stock": 30,
+      "stocks": [{"warehouse": "WH-001", "qty": 12}, {"warehouse": "WH-002", "qty": 4}],
+      "past_4w_outflow": [18, 22, 16, 19],
+      "suppliers": [
+        {"name": "(주)현대건자재", "last_price": 12500, "avg_lead_days": 3, "price_history_30d": [11800, 12000, 12500]},
+        {"name": "동신산업", "last_price": 13000, "avg_lead_days": 5, "price_history_30d": [12800, 13000, 13000]}
+      ],
+      "recent_orders_30d": 2
+    },
+    {
+      "sku": "KS-DECO-B220",
+      "name": "장식 패널 B220",
+      "category": "장식재",
+      "safety_stock": 50,
+      "stocks": [{"warehouse": "WH-001", "qty": 80}, {"warehouse": "WH-002", "qty": 35}],
+      "past_4w_outflow": [10, 8, 12, 9],
+      "suppliers": [
+        {"name": "한솔산업", "last_price": 22000, "avg_lead_days": 7, "price_history_30d": [22000, 22000, 22000]}
+      ],
+      "recent_orders_30d": 0
+    },
+    {
+      "sku": "KS-FLOOR-C310",
+      "name": "마루재 C310",
+      "category": "바닥재",
+      "safety_stock": 20,
+      "stocks": [{"warehouse": "WH-001", "qty": 8}, {"warehouse": "WH-002", "qty": 3}],
+      "past_4w_outflow": [15, 18, 14, 16],
+      "suppliers": [
+        {"name": "(주)현대건자재", "last_price": 45000, "avg_lead_days": 4, "price_history_30d": [42000, 44000, 45000]},
+        {"name": "남도자재", "last_price": 47000, "avg_lead_days": 6, "price_history_30d": [47000, 47000, 47000]}
+      ],
+      "recent_orders_30d": 1
+    },
+    {
+      "sku": "KS-PAINT-D050",
+      "name": "도장재 D050",
+      "category": "도장재",
+      "safety_stock": 15,
+      "stocks": [{"warehouse": "WH-001", "qty": 7}, {"warehouse": "WH-002", "qty": 2}],
+      "past_4w_outflow": [5, 4, 6, 5],
+      "suppliers": [
+        {"name": "동신산업", "last_price": 88000, "avg_lead_days": 10, "price_history_30d": [88000, 92000, 88000]}
+      ],
+      "recent_orders_30d": 0
+    }
+  ]
+}

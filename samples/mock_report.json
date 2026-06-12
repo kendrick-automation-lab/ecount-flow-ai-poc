@@ -1,0 +1,166 @@
+{
+  "summary": {
+    "auto_execute": 0,
+    "request_confirm": 1,
+    "manual_review": 1,
+    "skip": 1,
+    "registered_orders": 1,
+    "total_input_tokens": 0,
+    "total_output_tokens": 0
+  },
+  "cycles": [
+    {
+      "sku": "KS-WALL-A100",
+      "item_name": "타일 벽재 A100",
+      "recommendation": {
+        "sku": "KS-WALL-A100",
+        "recommended_qty": 0,
+        "supplier": null,
+        "est_price": 0,
+        "confidence": 0.7,
+        "reason": "Flow 멘션에 사전 발주 계획 단서. 중복 발주 방지.",
+        "risk_flags": [
+          "ALREADY_PLANNED"
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "skip",
+        "reason": "발주 보류 (Flow 멘션에 사전 발주 계획 단서. 중복 발주 방지.)"
+      },
+      "action_result": {
+        "flow_message": {
+          "channel": "C-INVENTORY",
+          "text": "⏭️ *발주 보류* — KS-WALL-A100 (타일 벽재 A100)\n이유: Flow 멘션에 사전 발주 계획 단서. 중복 발주 방지.\n위험 플래그: ALREADY_PLANNED",
+          "actions": [],
+          "ts": "2026-06-12T11:28:37.397953"
+        }
+      }
+    },
+    {
+      "sku": "KS-FLOOR-C310",
+      "item_name": "마루재 C310",
+      "recommendation": {
+        "sku": "KS-FLOOR-C310",
+        "recommended_qty": 24,
+        "supplier": "(주)현대건자재",
+        "est_price": 45000,
+        "confidence": 0.85,
+        "reason": "안전재고 - 현재재고 + 주평균출고(15.8) 기준. 최저단가 거래처 선택.",
+        "risk_flags": [
+          "PRICE_VOLATILE"
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "manual_review",
+        "reason": "신뢰도 85% 또는 금액 1,080,000 가 임계값 초과 — 사람 검토 필요"
+      },
+      "action_result": {
+        "flow_message": {
+          "channel": "C-INVENTORY",
+          "text": "⚠️ *수동 검토 필요* — KS-FLOOR-C310 (마루재 C310)\nAI 추천: 24개 @ 45,000원 / 거래처 (주)현대건자재\n신뢰도: 85% / 위험: PRICE_VOLATILE\n의사결정: 신뢰도 85% 또는 금액 1,080,000 가 임계값 초과 — 사람 검토 필요\n이유: 안전재고 - 현재재고 + 주평균출고(15.8) 기준. 최저단가 거래처 선택.",
+          "actions": [],
+          "ts": "2026-06-12T11:28:37.397953"
+        }
+      }
+    },
+    {
+      "sku": "KS-PAINT-D050",
+      "item_name": "도장재 D050",
+      "recommendation": {
+        "sku": "KS-PAINT-D050",
+        "recommended_qty": 11,
+        "supplier": "동신산업",
+        "est_price": 88000,
+        "confidence": 0.85,
+        "reason": "안전재고 - 현재재고 + 주평균출고(5.0) 기준. 최저단가 거래처 선택.",
+        "risk_flags": [
+          "LEAD_TIME_LONG"
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "duration_s": 0.0,
+        "mock": true,
+        "error": null
+      },
+      "decision": {
+        "action": "request_confirm",
+        "reason": "신뢰도 85% + 금액 968,000 + 위험: LEAD_TIME_LONG"
+      },
+      "action_result": {
+        "flow_message": {
+          "channel": "C-PURCHASE",
+          "text": "📦 *발주 추천 — 사람 confirm 요청*\n품목: KS-PAINT-D050 (도장재 D050)\n현재 재고: 9 / 안전: 15\n추천: 11개 @ 88,000원 → 총 968,000원\n거래처: 동신산업\n신뢰도: 85%\n위험 플래그: `LEAD_TIME_LONG`\n이유: 안전재고 - 현재재고 + 주평균출고(5.0) 기준. 최저단가 거래처 선택.\n의사결정 근거: 신뢰도 85% + 금액 968,000 + 위험: LEAD_TIME_LONG",
+          "actions": [
+            "/approve",
+            "/reject",
+            "/modify"
+          ],
+          "ts": "2026-06-12T11:28:37.397953"
+        },
+        "confirm_response": "approve",
+        "order": {
+          "order_id": "PO-00001",
+          "sku": "KS-PAINT-D050",
+          "qty": 11,
+          "supplier": "동신산업",
+          "est_price": 88000,
+          "total": 968000,
+          "note": "Confirm 후 발주 — 신뢰도 85%",
+          "status": "REGISTERED"
+        }
+      }
+    }
+  ],
+  "purchase_orders": [
+    {
+      "order_id": "PO-00001",
+      "sku": "KS-PAINT-D050",
+      "qty": 11,
+      "supplier": "동신산업",
+      "est_price": 88000,
+      "total": 968000,
+      "note": "Confirm 후 발주 — 신뢰도 85%",
+      "status": "REGISTERED"
+    }
+  ],
+  "flow_messages": [
+    {
+      "channel": "C-INVENTORY",
+      "text": "⏭️ *발주 보류* — KS-WALL-A100 (타일 벽재 A100)\n이유: Flow 멘션에 사전 발주 계획 단서. 중복 발주 방지.\n위험 플래그: ALREADY_PLANNED",
+      "actions": [],
+      "ts": "2026-06-12T11:28:37.397953"
+    },
+    {
+      "channel": "C-INVENTORY",
+      "text": "⚠️ *수동 검토 필요* — KS-FLOOR-C310 (마루재 C310)\nAI 추천: 24개 @ 45,000원 / 거래처 (주)현대건자재\n신뢰도: 85% / 위험: PRICE_VOLATILE\n의사결정: 신뢰도 85% 또는 금액 1,080,000 가 임계값 초과 — 사람 검토 필요\n이유: 안전재고 - 현재재고 + 주평균출고(15.8) 기준. 최저단가 거래처 선택.",
+      "actions": [],
+      "ts": "2026-06-12T11:28:37.397953"
+    },
+    {
+      "channel": "C-PURCHASE",
+      "text": "📦 *발주 추천 — 사람 confirm 요청*\n품목: KS-PAINT-D050 (도장재 D050)\n현재 재고: 9 / 안전: 15\n추천: 11개 @ 88,000원 → 총 968,000원\n거래처: 동신산업\n신뢰도: 85%\n위험 플래그: `LEAD_TIME_LONG`\n이유: 안전재고 - 현재재고 + 주평균출고(5.0) 기준. 최저단가 거래처 선택.\n의사결정 근거: 신뢰도 85% + 금액 968,000 + 위험: LEAD_TIME_LONG",
+      "actions": [
+        "/approve",
+        "/reject",
+        "/modify"
+      ],
+      "ts": "2026-06-12T11:28:37.397953"
+    },
+    {
+      "channel": "C-PURCHASE",
+      "text": "✅ *자동 발주 완료* — KS-PAINT-D050 (도장재 D050)\n발주번호: PO-00001\n11개 @ 88,000원 → 총 968,000원\n거래처: 동신산업\nAI 신뢰도: 85%",
+      "actions": [],
+      "ts": "2026-06-12T11:28:37.397953"
+    }
+  ]
+}

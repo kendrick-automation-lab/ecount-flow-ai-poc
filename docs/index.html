@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jarvis Ops Dashboard — 더미 환경 데모</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --ok:#34d399; --warn:#fbbf24; --bad:#f87171; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Pretendard','Malgun Gothic',sans-serif; padding:24px; }
+  h1 { font-size:20px; margin-bottom:4px; }
+  .sub { color:var(--muted); font-size:12px; margin-bottom:20px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
+  .card { background:var(--card); border-radius:12px; padding:16px; }
+  .kpi .num { font-size:28px; font-weight:700; color:var(--accent); }
+  .kpi .label { color:var(--muted); font-size:12px; margin-top:4px; }
+  .charts { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:12px; margin-bottom:20px; }
+  .card h2 { font-size:14px; margin-bottom:10px; color:var(--muted); }
+  ul.rules { list-style:none; } ul.rules li { padding:8px 0; border-bottom:1px solid #334155; font-size:13px; }
+  ul.rules li:last-child { border-bottom:none; }
+  .tag { display:inline-block; background:#334155; border-radius:6px; padding:1px 7px; font-size:11px; margin-right:6px; color:var(--accent); }
+  footer { color:var(--muted); font-size:11px; margin-top:16px; line-height:1.6; }
+</style>
+</head>
+<body>
+<h1>📊 Jarvis Ops Dashboard</h1>
+<div class="sub">ERP × 협업툴 AI 자동화 PoC — 더미 환경 운영 관측 · 생성 2026-06-12 16:52</div>
+
+<div class="grid">
+  <div class="card kpi"><div class="num">32<span style="font-size:14px;color:var(--muted)"> / 200</span></div><div class="label">안전재고 위반 SKU</div></div>
+  <div class="card kpi"><div class="num">9</div><div class="label">입금 매칭 완료 (부분 포함)</div></div>
+  <div class="card kpi"><div class="num">91</div><div class="label">미매칭 입금 (대기)</div></div>
+  <div class="card kpi"><div class="num">3</div><div class="label">추출된 사내 판단 룰</div></div>
+</div>
+
+<div class="charts">
+  <div class="card"><h2>입금 매칭 상태 분포</h2><canvas id="payChart"></canvas></div>
+  <div class="card"><h2>최근 사이클 — 시나리오별 액션 분기</h2><canvas id="scenarioChart"></canvas></div>
+</div>
+
+<div class="card">
+  <h2>🧠 Flow 대화에서 추출된 사내 판단 룰 (적용 전 담당자 확인 필요)</h2>
+  <ul class="rules"><li><span class='tag'>sku</span>[KS-DECO-B220] 담당자 보류/단종 멘션 존재 → 자동 발주 보류 + 담당자 확인 <span style='color:var(--muted)'>(출처: 김도윤 (물류))</span></li><li><span class='tag'>global</span>직전 단가 대비 10% 이상 인상 시 → 발주 전 구매팀장 보고 <span style='color:var(--muted)'>(출처: 김부장 (구매팀장))</span></li><li><span class='tag'>category</span>[단열재] 시즌 대비 기간 → 안전재고를 평소의 1.5배로 산정 <span style='color:var(--muted)'>(출처: 김부장 (구매팀장))</span></li></ul>
+</div>
+
+<footer>
+  ⚠️ 본 화면은 <b>더미 데이터 데모</b>입니다 — 분포는 시나리오 검증용 설계값이며 실제 운영 분포가 아닙니다.<br>
+  데이터 원천: 가짜 이카운트 (SQLite) + mock Flow + Jarvis 사이클 리포트 · 절감 시간 등 효율 지표는 운영 실측 후 추가 예정.
+</footer>
+
+<script>
+const DATA = {"generated_at": "2026-06-12 16:52", "items_total": 200, "breaches": 32, "payment_status": {"matched": 9, "unmatched": 91}, "sales_status": {"paid": 34, "partial": 9, "pending": 57}, "summary": {"inventory": {"request_confirm": 18, "manual_review": 14}, "payments": {"manual_review": 1, "auto_execute": 9}, "purchases": {"auto_execute": 1, "request_confirm": 1, "manual_review": 1}, "duration_s": 0.24}, "rules": [{"scope": "sku", "target": "KS-DECO-B220", "condition": "담당자 보류/단종 멘션 존재", "action": "자동 발주 보류 + 담당자 확인", "source": "김도윤 (물류)", "confidence": 0.75}, {"scope": "global", "target": null, "condition": "직전 단가 대비 10% 이상 인상 시", "action": "발주 전 구매팀장 보고", "source": "김부장 (구매팀장)", "confidence": 0.85}, {"scope": "category", "target": "단열재", "condition": "시즌 대비 기간", "action": "안전재고를 평소의 1.5배로 산정", "source": "김부장 (구매팀장)", "confidence": 0.8}]};
+new Chart(document.getElementById('payChart'), {
+  type: 'doughnut',
+  data: {
+    labels: Object.keys(DATA.payment_status),
+    datasets: [{ data: Object.values(DATA.payment_status),
+      backgroundColor: ['#94a3b8', '#34d399', '#fbbf24', '#f87171'] }]
+  },
+  options: { plugins: { legend: { labels: { color: '#e2e8f0' } } } }
+});
+const scen = DATA.summary || {};
+const names = ['inventory', 'payments', 'purchases'];
+const actions = ['auto_execute', 'request_confirm', 'manual_review', 'skip'];
+const colors = { auto_execute: '#34d399', request_confirm: '#fbbf24', manual_review: '#f87171', skip: '#94a3b8' };
+new Chart(document.getElementById('scenarioChart'), {
+  type: 'bar',
+  data: {
+    labels: ['① 안전재고', '② 입금매칭', '③ 구매입력'],
+    datasets: actions.map(a => ({
+      label: a, backgroundColor: colors[a],
+      data: names.map(n => (scen[n] || {})[a] || 0)
+    }))
+  },
+  options: {
+    scales: { x: { stacked: true, ticks: { color: '#e2e8f0' } }, y: { stacked: true, ticks: { color: '#e2e8f0' } } },
+    plugins: { legend: { labels: { color: '#e2e8f0' } } }
+  }
+});
+</script>
+</body>
+</html>
