@@ -180,36 +180,40 @@ def seed_payments(
     sales: list[tuple[int, int, int, str]],
     n: int = 100,
 ) -> None:
-    """매칭 케이스 분포:
-       - 30% 단일 청구서 정확 매칭 (자동 가능)
-       - 20% 거래처명 표기 변형 (fuzzy 필요)
-       - 15% 분할 입금 (큰 금액 = 청구서 2-3개 조합)
-       - 15% 부분 입금 (청구서 일부만)
-       - 20% 거래처 매칭 안 됨 (unmatched, 사람 검토)
+    """입금 분포 — 대부분 이미 대사(매칭) 완료, 현실적 '미확인 입금' 백로그만 남김:
+       - 85% matched  : 이미 정상 대사 완료된 과거 입금 (paid 청구서에 연결)
+       - 6%  fuzzy_name: 거래처명 표기 변형 (fuzzy 필요) — 미확인 백로그
+       - 4%  split     : 분할 입금 (청구서 2-3개 조합) — 미확인 백로그
+       - 3%  partial   : 부분 입금 (청구서 일부만) — 미확인 백로그
+       - 2%  unmatched : 거래처명 자체가 DB 에 없음 — 미확인 백로그
+    → 미확인 입금 ≈ 15건 (현업처럼 대부분 처리됨 + 소수 백로그). 매칭 시나리오는 이 백로그로 검증.
+    (2026-06-16: 전부 unmatched 로 시작하던 비현실 분포(미확인 96건)를 현실적으로 재조정)
     """
     base = datetime(2026, 2, 1)
 
     # 'paid' 청구서는 매칭 케이스 생성에서 제외 — 안 그러면 이미 수금된 청구서로
     # 입금을 만들어 의도한 30% exact 분포가 깨짐 (2026-06-12 점검에서 발견).
     open_sales = [s for s in sales if s[3] != "paid"]
+    paid_sales = [s for s in sales if s[3] == "paid"]  # 이미 수금된 청구서 → matched 입금 연결용
     if not open_sales:
         return
 
     for _ in range(n):
         case = random.choices(
             ["exact_match", "fuzzy_name", "split", "partial", "unmatched"],
-            weights=[30, 20, 15, 15, 20],
+            weights=[85, 6, 4, 3, 2],  # 대부분 대사완료, 미확인 백로그 ~15%
         )[0]
         received_at = (base + timedelta(days=random.randint(0, 100))).isoformat()
 
         if case == "exact_match":
-            _, partner_id, amount, _ = random.choice(open_sales)
+            # 이미 대사(매칭) 완료된 과거 입금. paid 청구서에 연결 → 미수금과 충돌 없음.
+            inv_id, partner_id, amount, _ = random.choice(paid_sales or open_sales)
             partner_name = conn.execute(
                 "SELECT name FROM partners WHERE partner_id = ?", (partner_id,)
             ).fetchone()[0]
             conn.execute(
-                "INSERT INTO payments (partner_name_as_received, amount, received_at, matched_invoice_ids, match_status) VALUES (?, ?, ?, ?, 'unmatched')",
-                (partner_name, amount, received_at, None),
+                "INSERT INTO payments (partner_name_as_received, amount, received_at, matched_invoice_ids, match_status) VALUES (?, ?, ?, ?, 'matched')",
+                (partner_name, amount, received_at, f"[{inv_id}]"),
             )
 
         elif case == "fuzzy_name":

@@ -132,15 +132,13 @@ footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-al
 <header>
   <div class="brand">✦ QUANTUM JARVIS</div>
   <h1>PoC 데모 대시보드</h1>
-  <div class="sub">ERP × 협업툴 AI 자동화 — 더미 데이터 시나리오 검증 뷰 (운영 아님)</div>
+  <div class="sub">ERP × 협업툴 AI 자동화</div>
   <div class="badges"><span class="badge">데이터: <b>__BACKEND__</b></span><span class="badge">생성 <b>__GENERATED_AT__</b></span><span class="badge">PoC 데모</span></div>
 </header>
 
-<div class="guide">📖 <b>처음 보시나요?</b> 가상의 건축자재 회사 데이터를 AI(Jarvis)가 분석한 데모입니다. 아래 <b>숫자 4개 = 오늘 챙길 일</b>, <b>그래프 = 누구부터·어떻게 처리할지</b>. AI 는 분석·제안만 하고 <b>실제 실행은 사람이 승인</b>하는 구조입니다.</div>
-
 <div class="grid">
   <div class="card kpi"><div class="ic">📦</div><div class="num" style="color:var(--warn)">__BREACH_COUNT__<small> / __ITEMS_TOTAL__</small></div><div class="label">안전재고 미만 품목</div><div class="hint">재고가 안전선 아래로 떨어진 품목 → 발주 검토 대상</div></div>
-  <div class="card kpi"><div class="ic">💸</div><div class="num" style="color:var(--bad)">__UNMATCHED_COUNT__<small>건</small></div><div class="label">아직 못 맞춘 입금</div><div class="hint">통장에 들어왔지만 어느 청구서 건인지 미확인 · 합계 __UNMATCHED_AMT__</div></div>
+  <div class="card kpi"><div class="ic">💸</div><div class="num" style="color:var(--bad)">__UNMATCHED_COUNT__<small>건</small></div><div class="label">미확인 입금</div><div class="hint">입금은 됐는데 어느 청구서 건인지 아직 매칭(대사) 안 된 입금 · 합계 __UNMATCHED_AMT__</div></div>
   <div class="card kpi"><div class="ic">🧾</div><div class="num" style="color:var(--accent)">__PARTNERS_RECV__<small>곳</small></div><div class="label">미수금 있는 거래처</div><div class="hint">팔고 아직 못 받은 외상값이 남은 거래처 · 총 __OUTSTANDING_AMT__</div></div>
   <div class="card kpi"><div class="ic">🧠</div><div class="num" style="color:var(--ok)">__RULES_COUNT__</div><div class="label">자동 추출된 사내 규칙</div><div class="hint">직원 대화에서 AI 가 뽑아낸 회사 규칙 (적용 전 사람 확인)</div></div>
 </div>
@@ -165,7 +163,7 @@ footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-al
 </div>
 
 <footer>
-  <div class="glos"><b>용어 한눈에</b> &nbsp;·&nbsp; <b>안전재고</b> 품절 막으려 유지하는 최소 재고 &nbsp;·&nbsp; <b>미수금</b> 팔고 아직 못 받은 외상값 &nbsp;·&nbsp; <b>입금매칭</b> 통장에 들어온 돈 ↔ 어느 청구서인지 맞추기 &nbsp;·&nbsp; <b>견적→전표</b> 견적서를 구매 장부에 입력 &nbsp;·&nbsp; <b>거래처</b> 사고파는 상대 회사</div>
+  <div class="glos"><b>용어 한눈에</b> &nbsp;·&nbsp; <b>안전재고</b> 품절 막으려 유지하는 최소 재고 &nbsp;·&nbsp; <b>미수금</b> 팔고 아직 못 받은 외상값 &nbsp;·&nbsp; <b>미확인 입금</b> 입금됐으나 아직 어느 청구서인지 매칭(대사) 안 된 것 &nbsp;·&nbsp; <b>견적→전표</b> 견적서를 구매 장부에 입력 &nbsp;·&nbsp; <b>거래처</b> 사고파는 상대 회사</div>
   ⚠️ <b>더미 데이터 PoC 데모</b> — 분포는 시나리오 검증용 설계값이며 실제 운영 분포가 아닙니다.<br>
   데이터 원천: __BACKEND__ + 사이클 리포트 · 절감 시간 등 효율 지표는 운영 실측 후 산정 예정.
 </footer>
