@@ -77,7 +77,7 @@ def main() -> int:
 
     # 채널 알림(ALERT) — 사람이 "보내줘/발송/넣어" 명시 요청 시 리스너가 브리핑을 업무 채널에 발송.
     # 에이전트는 read-only 유지. 알림은 ERP 변경이 아니라 '보고' 라 안전.
-    ALERT_CHANNELS = {"재고": "#재고", "재무": "#재무", "미수": "#구매"}
+    ALERT_CHANNELS = {"재고": "#재고", "재무": "#재무", "미수": "#재무"}
 
     def _try_send_alert(question: str):
         q = question.lower()

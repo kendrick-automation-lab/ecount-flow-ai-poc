@@ -26,7 +26,7 @@ from .flow import CHANNEL_OPS, FlowClient
 from .jarvis_agent import DEFAULT_MODEL, AgentTrace, _mock_tool, _run_tool_loop
 
 # Slack 멀티채널 발송 매핑 (워커 → 업무 채널). 봇이 각 채널에 초대돼 있어야 함.
-WORKER_CHANNEL = {"inventory": "#재고", "finance": "#재무", "receivables": "#구매"}
+WORKER_CHANNEL = {"inventory": "#재고", "finance": "#재무", "receivables": "#재무"}
 JARVIS_CHANNEL = "#jarvis"
 
 
