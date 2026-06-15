@@ -72,6 +72,19 @@ python scripts/build_dashboard.py                  # 대시보드 재생성 → 
 - 실 API: Airtable 인증+조회, Slack 대화·DM·멀티채널 발송 (실제 Claude tool-use).
 - 협업툴 대화의 "이미 발주 계획" 단서 → 중복 발주 차단 (정형 + 비정형 컨텍스트 결합).
 
+## 기술 스택 & 어떻게 만들었나
+- **언어**: Python 3.11
+- **LLM**: Anthropic Claude (`claude-sonnet-4-6`) — 공식 SDK, tool use(function calling) + adaptive thinking
+- **라이브러리**: httpx(REST) · rapidfuzz(fuzzy 매칭) · faker(더미 시드) · slack-bolt/slack-sdk(Socket Mode) · python-dotenv
+- **데이터/연동**: SQLite(더미) · **Airtable REST API**(실연동) · **Slack**(Socket Mode + Web API)
+- **적용한 설계 개념 (harness / loop engineering)**:
+  - 수동 tool-use 루프 + `max_iters` 무한 가드 (관측 위해 SDK 자동 runner 대신 직접 루프)
+  - **읽기 전용 도구로 행동 차단** — 프롬프트가 아니라 *구조*로 (아키텍처 제약)
+  - **eval 게이트** — generator ↔ checker 분리로 자기채점 후함(Ralph Wiggum) 방지
+  - 영속 대화 메모리 · Strategy 패턴(백엔드 교체) · asyncio orchestrator-workers · AgentTrace 관측
+- **개발**: Claude Code 활용 (설계·검증·운영 판단은 사람)
+- **의도적으로 미사용**: LangChain/CrewAI 등 프레임워크, MCP — Anthropic SDK + asyncio 로 직접 구현
+
 ## 정직성 명시
 - **PoC/데모** — production 운영 아님. 더미 "회사" 데이터 (분포는 검증용 설계값, 실 운영 분포 아님).
 - 이카운트·Flow 는 **공개 문서 분석 + 어댑터 설계**, 실 API 연동 시연은 **Airtable·Slack** 으로.
