@@ -49,6 +49,12 @@ ul.rules{list-style:none;} ul.rules li{padding:9px 0;border-bottom:1px solid rgb
 ul.rules li:last-child{border-bottom:none;}
 .tag{display:inline-block;background:rgba(139,124,255,.14);color:var(--accent);border-radius:6px;padding:1px 8px;font-size:11px;margin-right:7px;}
 footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-align:center;}
+.guide{background:rgba(139,124,255,.08);border:1px solid rgba(139,124,255,.22);border-radius:14px;padding:12px 16px;font-size:12.5px;color:var(--text);line-height:1.7;margin:16px 0 2px;}
+.guide b{color:var(--accent);font-weight:500;}
+.cap{color:var(--muted);font-size:11.5px;line-height:1.55;margin:-4px 0 12px;}
+.cap b{font-weight:500;}
+.glos{color:var(--muted);font-size:11px;line-height:1.8;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;}
+.glos b{color:var(--accent);font-weight:500;}
 </style>
 </head>
 <body><div class="wrap">
@@ -56,29 +62,39 @@ footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-al
   <div class="brand">✦ QUANTUM JARVIS</div>
   <h1>PoC 데모 대시보드</h1>
   <div class="sub">ERP × 협업툴 AI 자동화 — 더미 데이터 시나리오 검증 뷰 (운영 아님)</div>
-  <div class="badges"><span class="badge">데이터: <b>Airtable (실 API)</b></span><span class="badge">생성 <b>2026-06-15 21:59</b></span><span class="badge">PoC 데모</span></div>
+  <div class="badges"><span class="badge">데이터: <b>Airtable (실 API)</b></span><span class="badge">생성 <b>2026-06-16 00:20</b></span><span class="badge">PoC 데모</span></div>
 </header>
 
+<div class="guide">📖 <b>처음 보시나요?</b> 가상의 건축자재 회사 데이터를 AI(Jarvis)가 분석한 데모입니다. 아래 <b>숫자 4개 = 오늘 챙길 일</b>, <b>그래프 = 누구부터·어떻게 처리할지</b>. AI 는 분석·제안만 하고 <b>실제 실행은 사람이 승인</b>하는 구조입니다.</div>
+
 <div class="grid">
-  <div class="card kpi"><div class="ic">📦</div><div class="num" style="color:var(--warn)">32<small> / 200</small></div><div class="label">안전재고 미만 품목</div><div class="hint">즉시 발주 검토 대상</div></div>
-  <div class="card kpi"><div class="ic">💸</div><div class="num" style="color:var(--bad)">96<small>건</small></div><div class="label">미매칭 입금</div><div class="hint">합계 2.2억원 · 매칭 처리 필요</div></div>
-  <div class="card kpi"><div class="ic">🧾</div><div class="num" style="color:var(--accent)">38<small>곳</small></div><div class="label">미수 보유 거래처</div><div class="hint">미수 총액 1.8억원</div></div>
-  <div class="card kpi"><div class="ic">🧠</div><div class="num" style="color:var(--ok)">3</div><div class="label">추출된 사내 판단 룰</div><div class="hint">대화에서 자동 추출 (적용 전 확인)</div></div>
+  <div class="card kpi"><div class="ic">📦</div><div class="num" style="color:var(--warn)">32<small> / 200</small></div><div class="label">안전재고 미만 품목</div><div class="hint">재고가 안전선 아래로 떨어진 품목 → 발주 검토 대상</div></div>
+  <div class="card kpi"><div class="ic">💸</div><div class="num" style="color:var(--bad)">96<small>건</small></div><div class="label">아직 못 맞춘 입금</div><div class="hint">통장에 들어왔지만 어느 청구서 건인지 미확인 · 합계 2.2억원</div></div>
+  <div class="card kpi"><div class="ic">🧾</div><div class="num" style="color:var(--accent)">38<small>곳</small></div><div class="label">미수금 있는 거래처</div><div class="hint">팔고 아직 못 받은 외상값이 남은 거래처 · 총 1.8억원</div></div>
+  <div class="card kpi"><div class="ic">🧠</div><div class="num" style="color:var(--ok)">3</div><div class="label">자동 추출된 사내 규칙</div><div class="hint">직원 대화에서 AI 가 뽑아낸 회사 규칙 (적용 전 사람 확인)</div></div>
 </div>
 
 <div class="two">
-  <div class="card"><h2>미수 집중 거래처 TOP 5 (회수 우선순위)</h2><canvas id="recvChart" height="200"></canvas></div>
-  <div class="card"><h2>최근 사이클 — 시나리오별 액션 분기</h2><canvas id="scenChart" height="200"></canvas></div>
+  <div class="card"><h2>💰 미수금 많은 거래처 TOP 5</h2>
+    <div class="cap">팔고 아직 못 받은 외상값(미수금)이 큰 거래처 순 — <b>누구부터 회수할지</b> 우선순위.</div>
+    <canvas id="recvChart" height="200"></canvas></div>
+  <div class="card"><h2>⚙️ 업무별 처리 방식 자동 분류</h2>
+    <div class="cap">각 업무 건을 <b style="color:var(--ok)">자동 처리</b>·<b style="color:var(--warn)">사람 확인</b>·<b style="color:var(--bad)">수동 검토</b>·스킵 으로 나눈 결과. ※ <b>실제 실행이 아니라 '분류'만</b> — 실행은 사람 승인.</div>
+    <canvas id="scenChart" height="200"></canvas></div>
 </div>
 
 <div class="two">
-  <div class="card"><h2>🚨 안전재고 미만 — 부족 큰 순</h2>
-    <table><thead><tr><th>SKU</th><th>품목</th><th class="r">현재고/안전</th><th class="r">부족</th></tr></thead>
+  <div class="card"><h2>🚨 안전재고 미만 품목 — 부족 큰 순</h2>
+    <div class="cap">현재고가 안전재고(품절 막으려 유지하는 최소량) 아래인 품목. <b>현재고가 음수면 이미 품절+미출고</b>.</div>
+    <table><thead><tr><th>품목코드</th><th>품목</th><th class="r">현재고/안전</th><th class="r">부족</th></tr></thead>
     <tbody><tr><td>KS-WALL-0108</td><td>벽재 DarkCyan B968</td><td class='r'><span class='neg'>-61</span>/25</td><td class='r'>86</td></tr><tr><td>KS-FLOOR-0145</td><td>바닥재 MistyRose D205</td><td class='r'><span class='neg'>-69</span>/10</td><td class='r'>79</td></tr><tr><td>KS-INSU-0193</td><td>단열재 PaleGoldenRod </td><td class='r'><span class='neg'>-55</span>/20</td><td class='r'>75</td></tr><tr><td>KS-WALL-0136</td><td>벽재 MediumTurquoise</td><td class='r'><span class='neg'>-31</span>/40</td><td class='r'>71</td></tr><tr><td>KS-FINISH-0246</td><td>마감재 DarkBlue C863</td><td class='r'><span class='neg'>-45</span>/15</td><td class='r'>60</td></tr><tr><td>KS-DECO-0265</td><td>장식재 RoyalBlue C284</td><td class='r'><span class='neg'>-27</span>/20</td><td class='r'>47</td></tr></tbody></table></div>
-  <div class="card"><h2>🧠 추출된 사내 판단 룰 (적용 전 담당자 확인)</h2><ul class="rules"><li><span class='tag'>sku</span>[KS-DECO-B220] 담당자 보류/단종 멘션 존재 → 자동 발주 보류 + 담당자 확인</li><li><span class='tag'>global</span>직전 단가 대비 10% 이상 인상 시 → 발주 전 구매팀장 보고</li><li><span class='tag'>category</span>[단열재] 시즌 대비 기간 → 안전재고를 평소의 1.5배로 산정</li></ul></div>
+  <div class="card"><h2>🧠 자동 추출된 사내 규칙 (적용 전 담당자 확인)</h2>
+    <div class="cap">직원들의 협업툴 대화에서 AI 가 뽑아낸 "이럴 땐 이렇게" 규칙 — 자동화에 반영 전 사람이 검토.</div>
+    <ul class="rules"><li><span class='tag'>sku</span>[KS-DECO-B220] 담당자 보류/단종 멘션 존재 → 자동 발주 보류 + 담당자 확인</li><li><span class='tag'>global</span>직전 단가 대비 10% 이상 인상 시 → 발주 전 구매팀장 보고</li><li><span class='tag'>category</span>[단열재] 시즌 대비 기간 → 안전재고를 평소의 1.5배로 산정</li></ul></div>
 </div>
 
 <footer>
+  <div class="glos"><b>용어 한눈에</b> &nbsp;·&nbsp; <b>안전재고</b> 품절 막으려 유지하는 최소 재고 &nbsp;·&nbsp; <b>미수금</b> 팔고 아직 못 받은 외상값 &nbsp;·&nbsp; <b>입금매칭</b> 통장에 들어온 돈 ↔ 어느 청구서인지 맞추기 &nbsp;·&nbsp; <b>견적→전표</b> 견적서를 구매 장부에 입력 &nbsp;·&nbsp; <b>거래처</b> 사고파는 상대 회사</div>
   ⚠️ <b>더미 데이터 PoC 데모</b> — 분포는 시나리오 검증용 설계값이며 실제 운영 분포가 아닙니다.<br>
   데이터 원천: Airtable (실 API) + 사이클 리포트 · 절감 시간 등 효율 지표는 운영 실측 후 산정 예정.
 </footer>
@@ -93,10 +109,11 @@ new Chart(document.getElementById('recvChart'),{type:'bar',
   options:{indexAxis:'y',plugins:{legend:{display:false}},
     scales:{x:{grid:{color:gridC},ticks:{color:tickC,callback:v=>(v/10000)+'만'}},y:{grid:{display:false},ticks:{color:tickC}}}}});
 const scen=DATA.summary||{}, acts=['auto_execute','request_confirm','manual_review','skip'];
+const actLabel={auto_execute:'자동 처리',request_confirm:'사람 확인 요청',manual_review:'수동 검토',skip:'스킵'};
 const col={auto_execute:'#34d399',request_confirm:'#fbbf24',manual_review:'#fb7185',skip:'#9b97b5'};
 new Chart(document.getElementById('scenChart'),{type:'bar',
-  data:{labels:['① 안전재고','② 입금매칭','③ 구매입력'],
-    datasets:acts.map(a=>({label:a,backgroundColor:col[a],borderRadius:4,
+  data:{labels:[['① 안전재고','(발주 판단)'],['② 입금매칭','(입금↔청구서)'],['③ 구매입력','(견적→전표)']],
+    datasets:acts.map(a=>({label:actLabel[a],backgroundColor:col[a],borderRadius:4,
       data:['inventory','payments','purchases'].map(n=>(scen[n]||{})[a]||0)}))},
   options:{scales:{x:{stacked:true,grid:{display:false},ticks:{color:tickC}},y:{stacked:true,grid:{color:gridC},ticks:{color:tickC}}},
     plugins:{legend:{labels:{color:tickC,font:{size:10}}}}}});
