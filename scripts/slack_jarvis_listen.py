@@ -75,6 +75,38 @@ def main() -> int:
 
     app = App(token=bot_token)
 
+    # 채널 알림(ALERT) — 사람이 "보내줘/발송/넣어" 명시 요청 시 리스너가 브리핑을 업무 채널에 발송.
+    # 에이전트는 read-only 유지. 알림은 ERP 변경이 아니라 '보고' 라 안전.
+    ALERT_CHANNELS = {"재고": "#재고", "재무": "#재무", "미수": "#구매"}
+
+    def _try_send_alert(question: str):
+        q = question.lower()
+        is_alert = (("alert" in q or "알림" in question or "알럿" in question or "얼럿" in question)
+                    and any(x in question for x in ("보내", "발송", "줘", "채널", "공유", "넣어")))
+        if not is_alert:
+            return None
+        from src.agent_tools import dispatch
+        b = dispatch(db, "get_daily_briefing", {})
+        sent = []
+        for p in b.get("priorities", []):
+            ch = ALERT_CHANNELS.get(p.get("area"))
+            if not ch:
+                continue
+            try:
+                app.client.chat_postMessage(
+                    channel=ch,
+                    text=(f":rotating_light: *[{p['area']} 알림]* {p['action']}\n{p['detail']}\n"
+                          "_Jarvis 분석 결과입니다. 발주·매칭 실행은 담당자가 승인하세요._"),
+                )
+                sent.append(ch)
+            except Exception as e:  # noqa: BLE001
+                print(f"[!] alert {ch} 실패: {e}", file=sys.stderr)
+        if not sent:
+            return ":warning: 알림 채널 발송에 실패했어요. 봇이 #재고·#재무·#구매 채널에 초대돼 있는지 확인해 주세요."
+        return (f"필요한 항목을 채널에 알림으로 보냈어요: {', '.join(sent)}.\n"
+                "저는 ERP 데이터를 직접 바꾸진 못하고, 분석 결과를 알림으로 띄우는 것까지 합니다. "
+                "발주·입금 매칭 같은 실행은 담당자가 승인하세요.")
+
     @app.event("app_mention")
     def on_mention(event, say):  # noqa: ANN001
         raw = event.get("text", "")
@@ -82,6 +114,12 @@ def main() -> int:
         channel = event.get("channel", "default")
         if not question:
             say("질문을 같이 적어줘 — 예: `@Jarvis 현대건자재 미수금 얼마야?`")
+            return
+        alert = _try_send_alert(question)
+        if alert is not None:
+            mem.append(channel, "user", question)
+            mem.append(channel, "assistant", alert)
+            say(alert)
             return
         say(f":hourglass_flowing_sand: 조회 중… _{question}_")
         try:
@@ -102,6 +140,12 @@ def main() -> int:
         question = (event.get("text") or "").strip()
         channel = event.get("channel", "dm")
         if not question:
+            return
+        alert = _try_send_alert(question)
+        if alert is not None:
+            mem.append(channel, "user", question)
+            mem.append(channel, "assistant", alert)
+            say(alert)
             return
         say(f":hourglass_flowing_sand: 조회 중… _{question}_")
         try:
