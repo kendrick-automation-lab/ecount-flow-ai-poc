@@ -187,6 +187,50 @@ def _find_unmatched_payments_by_partner(db, query: str, limit: int = 8) -> dict[
     return {"query": query, "matches": matches}
 
 
+def _get_daily_briefing(db) -> dict[str, Any]:
+    """오늘의 운영 브리핑 — 재고·재무·미수 3개 영역 현황 + '가장 급한 일' 우선순위.
+
+    저장된 과거 이력이 아니라 호출 시점의 실시간 집계.
+    ('아침 브리핑', '오늘 현황', '뭐가 제일 급해' 류 질문에 사용.)
+    """
+    breaches = db.list_safety_stock_breaches()
+    pending = db.list_pending_payments()
+    pending_total = sum(p.amount for p in pending)
+    top = _top_receivable_partners(db, limit=3)
+
+    worst_stock = max(breaches, key=lambda it: it.safety_stock - it.total_stock, default=None)
+    biggest_pay = max(pending, key=lambda p: p.amount, default=None)
+
+    priorities: list[dict[str, Any]] = []
+    if biggest_pay:
+        priorities.append({
+            "area": "재무", "action": "미확인 입금 매칭",
+            "detail": f"{biggest_pay.partner_name_as_received} {biggest_pay.amount:,}원 (미확인 입금 중 최대 건)",
+        })
+    if worst_stock:
+        short = worst_stock.safety_stock - worst_stock.total_stock
+        priorities.append({
+            "area": "재고", "action": "안전재고 발주 검토",
+            "detail": f"{worst_stock.sku} 현재고 {worst_stock.total_stock}/안전 {worst_stock.safety_stock} (부족 {short})",
+        })
+    if top.get("top"):
+        t = top["top"][0]
+        priorities.append({
+            "area": "미수", "action": "미수금 회수 점검",
+            "detail": f"{t['partner_name']} {t['outstanding_total_fmt']} ({t['outstanding_count']}건, 최다 미수)",
+        })
+    return {
+        "note": "저장된 과거 이력이 아니라 호출 시점의 실시간 집계입니다.",
+        "inventory": {"breach_count": len(breaches)},
+        "finance": {"unmatched_count": len(pending), "unmatched_total_fmt": _won(pending_total)},
+        "receivables": {
+            "partner_count_with_receivables": top.get("partner_count_with_receivables", 0),
+            "top": top.get("top", []),
+        },
+        "priorities": priorities,
+    }
+
+
 # ─────────────────────────────────────────────
 # dispatch 테이블 + Anthropic tool 스키마
 # ─────────────────────────────────────────────
@@ -200,6 +244,7 @@ _DISPATCH: dict[str, Callable[..., dict[str, Any]]] = {
     "payment_match_stats": _payment_match_stats,
     "find_unmatched_payments_by_partner": _find_unmatched_payments_by_partner,
     "top_receivable_partners": _top_receivable_partners,
+    "get_daily_briefing": _get_daily_briefing,
 }
 
 
@@ -272,5 +317,11 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
             "type": "object",
             "properties": {"limit": {"type": "integer", "description": "상위 몇 곳 (기본 5)"}},
         },
+    },
+    {
+        "name": "get_daily_briefing",
+        "description": "오늘의 운영 브리핑 — 재고/재무/미수 3개 영역 현황과 '가장 급한 일' 우선순위를 한 번에 집계한다. "
+                       "'아침 브리핑', '오늘 현황 정리', '뭐가 제일 급해' 류 질문에 사용. 인자 없음.",
+        "input_schema": {"type": "object", "properties": {}},
     },
 ]
