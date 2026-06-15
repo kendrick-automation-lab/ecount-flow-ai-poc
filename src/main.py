@@ -41,8 +41,11 @@ SAMPLES = ROOT / "samples"
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="이카운트 + Flow 자동화 PoC (더미 환경 데모)")
-    p.add_argument("--scenario", choices=["inventory", "payment", "purchase", "all"], default="inventory",
-                   help="실행할 시나리오 (all = Jarvis Core 가 3개 병렬 실행)")
+    p.add_argument("--scenario",
+                   choices=["inventory", "payment", "purchase", "all", "ask", "investigate", "briefing", "eval"],
+                   default="inventory",
+                   help="시나리오 1-3 (workflow) / all (Jarvis Core 병렬) / "
+                        "ask·investigate·briefing (agent 레이어) / eval (평가 하네스)")
     p.add_argument("--mock", action="store_true", help="LLM mock 모드 강제 (API 키 있어도)")
     p.add_argument("--out", default=None, help="결과 JSON 저장 경로")
     # 시나리오 1 (안전재고)
@@ -57,6 +60,14 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--approve-all", action="store_true", help="(시나리오 2/3) confirm 요청 자동 승인 (테스트)")
     # 시나리오 3 (구매입력)
     p.add_argument("--quote", default=str(SAMPLES / "sample_quote.txt"), help="(시나리오 3) 견적서 텍스트 파일 경로")
+    # agent 레이어 (ask / investigate)
+    p.add_argument("--question", default=None, help="(ask) 실무자 자연어 질문")
+    p.add_argument("--topic", default=None, help="(investigate) 자율 조사 주제")
+    p.add_argument("--no-trace", action="store_true", help="(ask/investigate) trace 출력 생략")
+    p.add_argument("--backend", choices=["sqlite", "airtable"], default="sqlite",
+                   help="에이전트 데이터 백엔드 (sqlite=더미 / airtable=실 API 연동)")
+    p.add_argument("--notify", choices=["none", "slack"], default="none",
+                   help="(briefing) 결과를 협업툴로 발송 (slack=실 webhook)")
     return p.parse_args()
 
 
@@ -201,6 +212,94 @@ def run_purchase(args: argparse.Namespace) -> int:
     return 0
 
 
+DEMO_QUESTIONS = [
+    "지금 안전재고 미만인 품목 몇 개야?",
+    "현대건자재 미수금 얼마야?",
+    "미매칭 입금 현황 알려줘",
+    "한솔산업 입금 들어온 거 있어?",
+]
+DEMO_TOPICS = [
+    "지난달 미수금이 왜 이렇게 늘었는지 조사해줘",
+    "재고 부족 품목 상황 점검해줘",
+]
+
+
+def _open_db(args: argparse.Namespace):
+    from .db import DEFAULT_DB_PATH
+
+    if getattr(args, "backend", "sqlite") == "airtable":
+        from .airtable_client import AirtableClient
+        try:
+            client = AirtableClient.from_env()
+            print(f"[i] 백엔드: Airtable (실 API) — base {client.base_id}", file=sys.stderr)
+            return client
+        except RuntimeError as e:
+            print(f"[!] {e}", file=sys.stderr)
+            return None
+
+    db_path = Path(args.db) if args.db else DEFAULT_DB_PATH
+    if not db_path.exists():
+        print(f"[!] DB 없음: {db_path} — 먼저: python scripts/db_seed.py --reset", file=sys.stderr)
+        return None
+    return EcountDBClient.from_db(db_path)
+
+
+def run_ask(args: argparse.Namespace) -> int:
+    """① Q&A 에이전트 — 자연어 질문 → tool-use 루프 → 답변."""
+    from .jarvis_agent import QAAgent
+
+    db = _open_db(args)
+    if db is None:
+        return 2
+    agent = QAAgent(mock=args.mock)
+    questions = [args.question] if args.question else DEMO_QUESTIONS
+    print(f"[i] Q&A 에이전트 — 모드: {'MOCK (휴리스틱 브레인 + 진짜 도구)' if agent.mock else f'LLM ({agent.model})'}\n",
+          file=sys.stderr)
+
+    results = []
+    for q in questions:
+        res = agent.ask(db, q)
+        print(f"\nQ. {q}")
+        print(f"A. {res.answer}")
+        if not args.no_trace:
+            print(res.trace.render())
+        results.append(res.to_dict())
+
+    if args.out:
+        Path(args.out).write_text(json.dumps({"scenario": "ask", "results": results},
+                                             ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"\n[i] 리포트 저장: {args.out}", file=sys.stderr)
+    return 0
+
+
+def run_investigate(args: argparse.Namespace) -> int:
+    """② 자율 조사 에이전트 — 주제 → 자율 도구 체인 → 가설+권고 (행동 안 함)."""
+    from .jarvis_agent import InvestigationAgent
+
+    db = _open_db(args)
+    if db is None:
+        return 2
+    agent = InvestigationAgent(mock=args.mock)
+    topics = [args.topic] if args.topic else DEMO_TOPICS
+    print(f"[i] 자율 조사 에이전트 — 모드: {'MOCK' if agent.mock else f'LLM ({agent.model})'}"
+          f"  (read-only 도구만 → 구조적으로 행동 불가)\n", file=sys.stderr)
+
+    results = []
+    for t in topics:
+        res = agent.investigate(db, t)
+        print(f"\n■ 조사 주제: {t}")
+        print(res.render())
+        if not args.no_trace:
+            print(res.trace.render())
+        results.append(res.to_dict())
+
+    if args.out:
+        Path(args.out).write_text(json.dumps({"scenario": "investigate", "results": results},
+                                             ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"\n[i] 리포트 저장: {args.out}", file=sys.stderr)
+    return 0
+
+
 def run_jarvis(args: argparse.Namespace) -> int:
     import asyncio as _asyncio
 
@@ -255,6 +354,16 @@ def main() -> int:
         return run_purchase(args)
     if args.scenario == "all":
         return run_jarvis(args)
+    if args.scenario == "ask":
+        return run_ask(args)
+    if args.scenario == "investigate":
+        return run_investigate(args)
+    if args.scenario == "briefing":
+        from .jarvis_briefing import run_briefing_cli
+        return run_briefing_cli(args, _open_db)
+    if args.scenario == "eval":
+        from .agent_eval import run_eval_cli
+        return run_eval_cli(args, _open_db)
     return run_inventory(args)
 
 
