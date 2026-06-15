@@ -62,7 +62,7 @@ footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-al
   <div class="brand">✦ QUANTUM JARVIS</div>
   <h1>PoC 데모 대시보드</h1>
   <div class="sub">ERP × 협업툴 AI 자동화</div>
-  <div class="badges"><span class="badge">데이터: <b>Airtable (실 API)</b></span><span class="badge">생성 <b>2026-06-16 00:45</b></span><span class="badge">PoC 데모</span></div>
+  <div class="badges"><span class="badge">데이터: <b>Airtable (실 API)</b></span><span class="badge">생성 <b>2026-06-16 00:50</b></span><span class="badge">PoC 데모</span></div>
 </header>
 
 <div class="grid">
@@ -98,7 +98,7 @@ footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-al
 </footer>
 </div>
 <script>
-const DATA = {"top_partners": [{"partner_id": 21, "partner_name": "한솔산업8", "outstanding_count": 4, "outstanding_total": 15140510, "outstanding_total_fmt": "15,140,510원"}, {"partner_id": 32, "partner_name": "한솔산업19", "outstanding_count": 4, "outstanding_total": 14263463, "outstanding_total_fmt": "14,263,463원"}, {"partner_id": 48, "partner_name": "태양자재19", "outstanding_count": 3, "outstanding_total": 12389770, "outstanding_total_fmt": "12,389,770원"}, {"partner_id": 28, "partner_name": "주식회사 대림산업16", "outstanding_count": 3, "outstanding_total": 9795506, "outstanding_total_fmt": "9,795,506원"}, {"partner_id": 43, "partner_name": "주식회사 동신건설11", "outstanding_count": 3, "outstanding_total": 8396628, "outstanding_total_fmt": "8,396,628원"}], "summary": {"inventory": {"request_confirm": 18, "manual_review": 14}, "payments": {"manual_review": 1, "auto_execute": 9}, "purchases": {"auto_execute": 1, "request_confirm": 1, "manual_review": 1}, "duration_s": 0.23}};
+const DATA = {"top_partners": [{"partner_id": 21, "partner_name": "한솔산업8", "outstanding_count": 4, "outstanding_total": 15140510, "outstanding_total_fmt": "15,140,510원"}, {"partner_id": 32, "partner_name": "한솔산업19", "outstanding_count": 4, "outstanding_total": 14263463, "outstanding_total_fmt": "14,263,463원"}, {"partner_id": 48, "partner_name": "태양자재19", "outstanding_count": 3, "outstanding_total": 12389770, "outstanding_total_fmt": "12,389,770원"}, {"partner_id": 28, "partner_name": "주식회사 대림산업16", "outstanding_count": 3, "outstanding_total": 9795506, "outstanding_total_fmt": "9,795,506원"}, {"partner_id": 43, "partner_name": "주식회사 동신건설11", "outstanding_count": 3, "outstanding_total": 8396628, "outstanding_total_fmt": "8,396,628원"}], "summary": {"inventory": {"request_confirm": 18, "manual_review": 14}, "payments": {"manual_review": 3, "request_confirm": 4, "auto_execute": 5}, "purchases": {"auto_execute": 1, "request_confirm": 1, "manual_review": 1}, "duration_s": 0.17}};
 const gridC='rgba(255,255,255,.06)', tickC='#9b97b5';
 new Chart(document.getElementById('recvChart'),{type:'bar',
   data:{labels:DATA.top_partners.map(p=>p.partner_name),
