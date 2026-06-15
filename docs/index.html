@@ -3,81 +3,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jarvis Ops Dashboard — 더미 환경 데모</title>
+<title>Jarvis Ops Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
-  :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --ok:#34d399; --warn:#fbbf24; --bad:#f87171; }
-  * { box-sizing:border-box; margin:0; }
-  body { background:var(--bg); color:var(--text); font-family:'Pretendard','Malgun Gothic',sans-serif; padding:24px; }
-  h1 { font-size:20px; margin-bottom:4px; }
-  .sub { color:var(--muted); font-size:12px; margin-bottom:20px; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
-  .card { background:var(--card); border-radius:12px; padding:16px; }
-  .kpi .num { font-size:28px; font-weight:700; color:var(--accent); }
-  .kpi .label { color:var(--muted); font-size:12px; margin-top:4px; }
-  .charts { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:12px; margin-bottom:20px; }
-  .card h2 { font-size:14px; margin-bottom:10px; color:var(--muted); }
-  ul.rules { list-style:none; } ul.rules li { padding:8px 0; border-bottom:1px solid #334155; font-size:13px; }
-  ul.rules li:last-child { border-bottom:none; }
-  .tag { display:inline-block; background:#334155; border-radius:6px; padding:1px 7px; font-size:11px; margin-right:6px; color:var(--accent); }
-  footer { color:var(--muted); font-size:11px; margin-top:16px; line-height:1.6; }
+@font-face{font-family:'GmarketSans';font-weight:300;font-display:swap;src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');}
+@font-face{font-family:'GmarketSans';font-weight:500;font-display:swap;src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');}
+@font-face{font-family:'GmarketSans';font-weight:700;font-display:swap;src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');}
+:root{--accent:#8b7cff;--accent2:#5b8def;--ok:#34d399;--warn:#fbbf24;--bad:#fb7185;--text:#eceaf6;--muted:#9b97b5;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'GmarketSans','Pretendard','Malgun Gothic',sans-serif;font-weight:300;color:var(--text);
+  background:radial-gradient(1100px 480px at 50% -12%,rgba(124,108,246,.28),transparent 60%),
+             radial-gradient(700px 400px at 88% 8%,rgba(91,141,239,.14),transparent 55%),#07070d;
+  min-height:100vh;padding:40px 20px;}
+.wrap{max-width:1080px;margin:0 auto;}
+header{text-align:center;margin-bottom:8px;}
+.brand{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.5px;
+  color:var(--accent);background:rgba(139,124,255,.1);border:1px solid rgba(139,124,255,.25);
+  padding:5px 14px;border-radius:999px;margin-bottom:18px;}
+h1{font-weight:700;font-size:30px;letter-spacing:-.5px;
+  background:linear-gradient(120deg,#fff 30%,#b9acff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.sub{color:var(--muted);font-size:13px;margin-top:8px;}
+.badges{margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.badge{font-size:11px;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  padding:4px 11px;border-radius:999px;}
+.badge b{color:var(--accent);font-weight:500;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0;}
+.card{position:relative;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;padding:20px;backdrop-filter:blur(12px);overflow:hidden;}
+.card::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.5;}
+.kpi .num{font-weight:700;font-size:32px;line-height:1;color:#fff;}
+.kpi .num small{font-size:15px;color:var(--muted);font-weight:300;}
+.kpi .label{color:var(--text);font-size:13px;margin-top:10px;font-weight:500;}
+.kpi .hint{color:var(--muted);font-size:11px;margin-top:4px;line-height:1.5;}
+.kpi .ic{font-size:18px;opacity:.9;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+@media(max-width:760px){.two{grid-template-columns:1fr;}}
+.card h2{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:14px;letter-spacing:.3px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{text-align:left;color:var(--muted);font-weight:500;font-size:11px;padding:6px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
+td{padding:9px 4px;border-bottom:1px solid rgba(255,255,255,.05);font-weight:300;}
+td.r,th.r{text-align:right;}
+.neg{color:var(--bad);font-weight:500;}
+ul.rules{list-style:none;} ul.rules li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px;line-height:1.5;}
+ul.rules li:last-child{border-bottom:none;}
+.tag{display:inline-block;background:rgba(139,124,255,.14);color:var(--accent);border-radius:6px;padding:1px 8px;font-size:11px;margin-right:7px;}
+footer{color:var(--muted);font-size:11px;margin-top:22px;line-height:1.7;text-align:center;}
 </style>
 </head>
-<body>
-<h1>📊 Jarvis Ops Dashboard</h1>
-<div class="sub">ERP × 협업툴 AI 자동화 PoC — 더미 환경 운영 관측 · 생성 2026-06-15 21:14</div>
+<body><div class="wrap">
+<header>
+  <div class="brand">✦ KS QUANTUM JARVIS</div>
+  <h1>운영 대시보드</h1>
+  <div class="sub">ERP × 협업툴 AI 자동화 — 실시간 운영 관측</div>
+  <div class="badges"><span class="badge">데이터: <b>Airtable (실 API)</b></span><span class="badge">생성 <b>2026-06-15 21:45</b></span><span class="badge">PoC 데모</span></div>
+</header>
 
 <div class="grid">
-  <div class="card kpi"><div class="num">32<span style="font-size:14px;color:var(--muted)"> / 200</span></div><div class="label">안전재고 위반 SKU</div></div>
-  <div class="card kpi"><div class="num">9</div><div class="label">입금 매칭 완료 (부분 포함)</div></div>
-  <div class="card kpi"><div class="num">91</div><div class="label">미매칭 입금 (대기)</div></div>
-  <div class="card kpi"><div class="num">3</div><div class="label">추출된 사내 판단 룰</div></div>
+  <div class="card kpi"><div class="ic">📦</div><div class="num" style="color:var(--warn)">32<small> / 200</small></div><div class="label">안전재고 미만 품목</div><div class="hint">즉시 발주 검토 대상</div></div>
+  <div class="card kpi"><div class="ic">💸</div><div class="num" style="color:var(--bad)">96<small>건</small></div><div class="label">미매칭 입금</div><div class="hint">합계 2.2억원 · 매칭 처리 필요</div></div>
+  <div class="card kpi"><div class="ic">🧾</div><div class="num" style="color:var(--accent)">38<small>곳</small></div><div class="label">미수 보유 거래처</div><div class="hint">미수 총액 1.8억원</div></div>
+  <div class="card kpi"><div class="ic">🧠</div><div class="num" style="color:var(--ok)">3</div><div class="label">추출된 사내 판단 룰</div><div class="hint">대화에서 자동 추출 (적용 전 확인)</div></div>
 </div>
 
-<div class="charts">
-  <div class="card"><h2>입금 매칭 상태 분포</h2><canvas id="payChart"></canvas></div>
-  <div class="card"><h2>최근 사이클 — 시나리오별 액션 분기</h2><canvas id="scenarioChart"></canvas></div>
+<div class="two">
+  <div class="card"><h2>미수 집중 거래처 TOP 5 (회수 우선순위)</h2><canvas id="recvChart" height="200"></canvas></div>
+  <div class="card"><h2>최근 사이클 — 시나리오별 액션 분기</h2><canvas id="scenChart" height="200"></canvas></div>
 </div>
 
-<div class="card">
-  <h2>🧠 Flow 대화에서 추출된 사내 판단 룰 (적용 전 담당자 확인 필요)</h2>
-  <ul class="rules"><li><span class='tag'>sku</span>[KS-DECO-B220] 담당자 보류/단종 멘션 존재 → 자동 발주 보류 + 담당자 확인 <span style='color:var(--muted)'>(출처: 김도윤 (물류))</span></li><li><span class='tag'>global</span>직전 단가 대비 10% 이상 인상 시 → 발주 전 구매팀장 보고 <span style='color:var(--muted)'>(출처: 김부장 (구매팀장))</span></li><li><span class='tag'>category</span>[단열재] 시즌 대비 기간 → 안전재고를 평소의 1.5배로 산정 <span style='color:var(--muted)'>(출처: 김부장 (구매팀장))</span></li></ul>
+<div class="two">
+  <div class="card"><h2>🚨 안전재고 미만 — 부족 큰 순</h2>
+    <table><thead><tr><th>SKU</th><th>품목</th><th class="r">현재고/안전</th><th class="r">부족</th></tr></thead>
+    <tbody><tr><td>KS-WALL-0108</td><td>벽재 DarkCyan B968</td><td class='r'><span class='neg'>-61</span>/25</td><td class='r'>86</td></tr><tr><td>KS-FLOOR-0145</td><td>바닥재 MistyRose D205</td><td class='r'><span class='neg'>-69</span>/10</td><td class='r'>79</td></tr><tr><td>KS-INSU-0193</td><td>단열재 PaleGoldenRod </td><td class='r'><span class='neg'>-55</span>/20</td><td class='r'>75</td></tr><tr><td>KS-WALL-0136</td><td>벽재 MediumTurquoise</td><td class='r'><span class='neg'>-31</span>/40</td><td class='r'>71</td></tr><tr><td>KS-FINISH-0246</td><td>마감재 DarkBlue C863</td><td class='r'><span class='neg'>-45</span>/15</td><td class='r'>60</td></tr><tr><td>KS-DECO-0265</td><td>장식재 RoyalBlue C284</td><td class='r'><span class='neg'>-27</span>/20</td><td class='r'>47</td></tr></tbody></table></div>
+  <div class="card"><h2>🧠 추출된 사내 판단 룰 (적용 전 담당자 확인)</h2><ul class="rules"><li><span class='tag'>sku</span>[KS-DECO-B220] 담당자 보류/단종 멘션 존재 → 자동 발주 보류 + 담당자 확인</li><li><span class='tag'>global</span>직전 단가 대비 10% 이상 인상 시 → 발주 전 구매팀장 보고</li><li><span class='tag'>category</span>[단열재] 시즌 대비 기간 → 안전재고를 평소의 1.5배로 산정</li></ul></div>
 </div>
 
 <footer>
-  ⚠️ 본 화면은 <b>더미 데이터 데모</b>입니다 — 분포는 시나리오 검증용 설계값이며 실제 운영 분포가 아닙니다.<br>
-  데이터 원천: 가짜 이카운트 (SQLite) + mock Flow + Jarvis 사이클 리포트 · 절감 시간 등 효율 지표는 운영 실측 후 추가 예정.
+  ⚠️ <b>더미 데이터 PoC 데모</b> — 분포는 시나리오 검증용 설계값이며 실제 운영 분포가 아닙니다.<br>
+  데이터 원천: Airtable (실 API) + 사이클 리포트 · 절감 시간 등 효율 지표는 운영 실측 후 산정 예정.
 </footer>
-
+</div>
 <script>
-const DATA = {"generated_at": "2026-06-15 21:14", "items_total": 200, "breaches": 32, "payment_status": {"matched": 9, "unmatched": 91}, "sales_status": {"paid": 34, "partial": 9, "pending": 57}, "summary": {"inventory": {"request_confirm": 18, "manual_review": 14}, "payments": {"manual_review": 1, "auto_execute": 9}, "purchases": {"auto_execute": 1, "request_confirm": 1, "manual_review": 1}, "duration_s": 0.23}, "rules": [{"scope": "sku", "target": "KS-DECO-B220", "condition": "담당자 보류/단종 멘션 존재", "action": "자동 발주 보류 + 담당자 확인", "source": "김도윤 (물류)", "confidence": 0.75}, {"scope": "global", "target": null, "condition": "직전 단가 대비 10% 이상 인상 시", "action": "발주 전 구매팀장 보고", "source": "김부장 (구매팀장)", "confidence": 0.85}, {"scope": "category", "target": "단열재", "condition": "시즌 대비 기간", "action": "안전재고를 평소의 1.5배로 산정", "source": "김부장 (구매팀장)", "confidence": 0.8}]};
-new Chart(document.getElementById('payChart'), {
-  type: 'doughnut',
-  data: {
-    labels: Object.keys(DATA.payment_status),
-    datasets: [{ data: Object.values(DATA.payment_status),
-      backgroundColor: ['#94a3b8', '#34d399', '#fbbf24', '#f87171'] }]
-  },
-  options: { plugins: { legend: { labels: { color: '#e2e8f0' } } } }
-});
-const scen = DATA.summary || {};
-const names = ['inventory', 'payments', 'purchases'];
-const actions = ['auto_execute', 'request_confirm', 'manual_review', 'skip'];
-const colors = { auto_execute: '#34d399', request_confirm: '#fbbf24', manual_review: '#f87171', skip: '#94a3b8' };
-new Chart(document.getElementById('scenarioChart'), {
-  type: 'bar',
-  data: {
-    labels: ['① 안전재고', '② 입금매칭', '③ 구매입력'],
-    datasets: actions.map(a => ({
-      label: a, backgroundColor: colors[a],
-      data: names.map(n => (scen[n] || {})[a] || 0)
-    }))
-  },
-  options: {
-    scales: { x: { stacked: true, ticks: { color: '#e2e8f0' } }, y: { stacked: true, ticks: { color: '#e2e8f0' } } },
-    plugins: { legend: { labels: { color: '#e2e8f0' } } }
-  }
-});
+const DATA = {"top_partners": [{"partner_id": 21, "partner_name": "한솔산업8", "outstanding_count": 4, "outstanding_total": 15140510, "outstanding_total_fmt": "15,140,510원"}, {"partner_id": 48, "partner_name": "태양자재19", "outstanding_count": 3, "outstanding_total": 12389770, "outstanding_total_fmt": "12,389,770원"}, {"partner_id": 32, "partner_name": "한솔산업19", "outstanding_count": 3, "outstanding_total": 10994267, "outstanding_total_fmt": "10,994,267원"}, {"partner_id": 28, "partner_name": "주식회사 대림산업16", "outstanding_count": 3, "outstanding_total": 9795506, "outstanding_total_fmt": "9,795,506원"}, {"partner_id": 43, "partner_name": "주식회사 동신건설11", "outstanding_count": 3, "outstanding_total": 8396628, "outstanding_total_fmt": "8,396,628원"}], "summary": {"inventory": {"request_confirm": 18, "manual_review": 14}, "payments": {"manual_review": 1, "auto_execute": 9}, "purchases": {"auto_execute": 1, "request_confirm": 1, "manual_review": 1}, "duration_s": 0.23}};
+const gridC='rgba(255,255,255,.06)', tickC='#9b97b5';
+new Chart(document.getElementById('recvChart'),{type:'bar',
+  data:{labels:DATA.top_partners.map(p=>p.partner_name),
+    datasets:[{data:DATA.top_partners.map(p=>p.outstanding_total),
+      backgroundColor:'rgba(139,124,255,.55)',borderColor:'#8b7cff',borderWidth:1,borderRadius:6}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{grid:{color:gridC},ticks:{color:tickC,callback:v=>(v/10000)+'만'}},y:{grid:{display:false},ticks:{color:tickC}}}}});
+const scen=DATA.summary||{}, acts=['auto_execute','request_confirm','manual_review','skip'];
+const col={auto_execute:'#34d399',request_confirm:'#fbbf24',manual_review:'#fb7185',skip:'#9b97b5'};
+new Chart(document.getElementById('scenChart'),{type:'bar',
+  data:{labels:['① 안전재고','② 입금매칭','③ 구매입력'],
+    datasets:acts.map(a=>({label:a,backgroundColor:col[a],borderRadius:4,
+      data:['inventory','payments','purchases'].map(n=>(scen[n]||{})[a]||0)}))},
+  options:{scales:{x:{stacked:true,grid:{display:false},ticks:{color:tickC}},y:{stacked:true,grid:{color:gridC},ticks:{color:tickC}}},
+    plugins:{legend:{labels:{color:tickC,font:{size:10}}}}}});
 </script>
-</body>
-</html>
+</body></html>

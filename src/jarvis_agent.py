@@ -150,7 +150,7 @@ def _run_tool_loop(db, *, system: str, user: str, trace: AgentTrace,
     """수동 tool-use 루프. Claude 가 tool_use 를 멈출 때까지 도구를 실행하며 돈다.
 
     수동 루프인 이유: 매 스텝을 trace 에 기록하고(관측), max_iters 로 무한루프를 막기 위함.
-    (SDK 의 자동 tool runner 를 쓰면 이 가시성/제어가 사라짐 — 면접에서 설명 불가.)
+    (SDK 의 자동 tool runner 를 쓰면 이 가시성/제어가 사라짐 — 관측·디버깅이 어려움.)
     """
     from anthropic import Anthropic
 
