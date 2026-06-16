@@ -24,7 +24,7 @@
 - **멀티에이전트 아침 브리핑** — 재고·재무·채권 분석가 병렬 → 각 팀 채널 자동 발송.
 
 ### 3) Agent — LLM 이 도구를 스스로 선택 (tool-use 루프, `src/jarvis_agent.py`)
-- **① Q&A** — 자연어 질문 → 읽기 도구 7종(`agent_tools.py`) 조회 → 답변 (멀티턴 영속 메모리 `conversation_memory.py`).
+- **① Q&A** — 자연어 질문 → 읽기 전용 도구 8종(`agent_tools.py`, 아침 브리핑 포함) 조회 → 답변 (멀티턴 영속 메모리 `conversation_memory.py`).
 - **② 자율 조사** — 이상 징후 스스로 조사 → 가설+권고. **행동은 안 함 — 쓰기 도구 미제공으로 구조적 차단.**
 - **관측** `AgentTrace` + **평가 하네스** `agent_eval.py`(정답 대조 채점, 5/5).
 
@@ -38,7 +38,7 @@
 | **데이터** | **Airtable 실 API** (`src/airtable_client.py`) — 클라우드 그리드 가시화, `--backend airtable`. 기본은 SQLite 더미. Strategy 패턴으로 교체 |
 | **협업툴** | **Slack** — Tier 3 **대화형 Jarvis**(Socket Mode, `scripts/slack_jarvis_listen.py`): 채널 멘션/DM → 실시간 답변. + 멀티채널 자동 브리핑 |
 
-> 타깃 도구(이카운트 OAPI · Flow OpenAPI)는 어댑터 패턴으로 교체 가능하게 설계 — 각 사업자/유료 플랜 게이트가 있어, 동일 패턴을 게이트 없는 Airtable·Slack 실 API 로 시연.
+> **왜 이카운트/Flow가 아니라 Airtable/Slack인가?** 원래는 이카운트 ERP와 Flow 협업툴로 구현하려 했지만, 데모 단계에서는 사업자 인증·유료 플랜 같은 제약이 있었습니다. 그래서 어댑터 패턴으로 설계해, 무료로 쓸 수 있는 Airtable을 ERP 대신, Slack을 Flow 협업툴 대신 연결했습니다. 구조가 같아서, 실제 환경에서는 어댑터만 이카운트 OAPI·Flow OpenAPI로 바꾸면 됩니다.
 
 ## 실행
 ```bash
