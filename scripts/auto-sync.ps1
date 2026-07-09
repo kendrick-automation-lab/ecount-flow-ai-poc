@@ -32,6 +32,12 @@ function Send-Alert {
 # 0. Git repo?
 if (-not (Test-Path ".git")) { exit 0 }
 
+# 0. Multi-agent safety (2026-07-09): 다른 에이전트/세션이 git 작업 중이면 이번 턴 스킵.
+#    index.lock / mid-merge / rebase / cherry-pick → 다음 턴 자동 재시도 (마스터 훅과 대칭).
+if ((Test-Path ".git/index.lock") -or (Test-Path ".git/MERGE_HEAD") -or
+    (Test-Path ".git/rebase-merge") -or (Test-Path ".git/rebase-apply") -or
+    (Test-Path ".git/CHERRY_PICK_HEAD")) { exit 0 }
+
 # 1. Any changes?
 $changes = git status --porcelain 2>$null
 if ([string]::IsNullOrWhiteSpace("$changes")) { exit 0 }
