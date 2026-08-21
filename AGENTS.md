@@ -5,7 +5,7 @@
 # AGENTS.md — ecount-flow-ai-poc
 
 Read first, in order:
-1. Master co-work contract: `C:\Users\asase\Desktop\claude\AGENTS.md` (separate repo one level up — your tool will NOT auto-load it, read it explicitly).
+1. Master co-work contract: `../AGENTS.md` (separate repo one level up, if you have it - your tool will NOT auto-load it, read it explicitly).
 
 ## Hard rules (any vendor, no exceptions)
 
